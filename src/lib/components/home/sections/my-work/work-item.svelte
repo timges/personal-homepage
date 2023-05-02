@@ -1,12 +1,26 @@
 <script lang="ts">
+	import { createEventDispatcher } from "svelte";
+
+
+	export let id: string;
 	export let title: string;
 	export let description: string;
 	export let tags: string[];
 	export let icon: 'link' | 'github' | undefined = undefined;
 	export let link: string | undefined = undefined;
+
+	const dispatch = createEventDispatcher();
+
+	function dispatchContainerClickEvent() {
+		dispatch("container-click");
+	}
 </script>
 
-<div class="container">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div
+	class="container"
+	on:click={dispatchContainerClickEvent}
+>
 	<h3>{title}</h3>
 	<p>{description}</p>
 	<div class="meta-container">

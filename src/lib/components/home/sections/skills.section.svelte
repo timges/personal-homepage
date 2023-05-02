@@ -2,11 +2,11 @@
 	import { tweened } from 'svelte/motion';
 	let sectionHeight: number = 0;
 
-	const mousePosXPercentFromLeft = tweened(45, { duration: 50 });
+	const mousePosXPercentFromLeft = tweened(46, { duration: 50 });
 	const mousePosYPercentFromTop = tweened(0, { duration: 50 });
 	function handleMouseMove(event: MouseEvent) {
-		$mousePosXPercentFromLeft = (event.clientX / window.innerWidth) * 100;
-		$mousePosYPercentFromTop = (event.offsetY / sectionHeight) * 100;
+		// $mousePosXPercentFromLeft = (event.clientX / window.innerWidth) * 100;
+		// $mousePosYPercentFromTop = (event.offsetY / sectionHeight) * 100;
 	}
 
 	$: clipPath = `polygon(100px 0, 100% 0, 100% 100%, 0 100%)`;
@@ -69,12 +69,12 @@
 	}
 
 	.overlay-design {
-		background: $color-primary;
+		background: $color-secondary;
 		right: 0;
 		transition: clip-path 0.1s ease-in-out;
 	}
 	.overlay-dev {
-		background: $color-secondary;
+		background: $color-primary;
 		left: 0;
 	}
 

@@ -1,7 +1,7 @@
 <nav id="nav">
 	<div>ICON</div>
 	<ul>
-		<li><a href="/#skills">Skillsets</a></li>
+		<li><a href="/#skills">Skills</a></li>
 		<li><a href="/#work">My Work</a></li>
 		<li><a href="/contact">Experience</a></li>
 		<li><a href="/contact">Contact</a></li>
