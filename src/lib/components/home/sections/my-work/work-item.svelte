@@ -60,6 +60,7 @@
 		background-color: $color-bg-dark;
 		padding: $spacing-l;
 		height: 350px;
+		border-radius: $border-radius-s;
 		transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
 		&:hover {

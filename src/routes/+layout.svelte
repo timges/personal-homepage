@@ -1,10 +1,12 @@
 <script lang="ts">
 	import Socials from '$lib/components/socials.svelte';
 	import NavBar from '../lib/components/nav-bar.svelte';
+
+	let showBackToTop: boolean;
 </script>
 
-<NavBar />
-<Socials />
+<NavBar on:exit-viewport={() => (showBackToTop = true)} on:enter-viewport={() => showBackToTop=false}/>
+<Socials {showBackToTop} />
 
 <slot />
 
@@ -13,6 +15,5 @@
 	:root {
 		letter-spacing: $letter-spacing-l;
 		scroll-behavior: smooth;
-		overflow-x: hidden;
 	}
 </style>

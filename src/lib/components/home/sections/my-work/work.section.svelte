@@ -1,24 +1,10 @@
 <script lang="ts">
-	import Flyout from './flyout.svelte';
 	import WorkItem from './work-item.svelte';
 	import items from './items';
 
-	let showFlyout: boolean = true;
+	let showFlyout: boolean = false;
 	let activeItemId: string = '0';
 	$: activeItem = items?.find((item) => item.id === activeItemId);
-
-	function closeFlyout() {
-		showFlyout = false;
-	}
-	function openFlyout(itemId: string) {
-		activeItemId = itemId;
-		if (showFlyout) {
-			showFlyout = false;
-		}
-		setTimeout(() => {
-			showFlyout = true;
-		}, 200);
-	}
 </script>
 
 <section id="work">
@@ -30,7 +16,6 @@
 				title={item.title}
 				description={item.description}
 				tags={item.tags}
-				on:container-click={() => openFlyout(item.id)}
 				icon={item.icon}
 				link={item.link}
 			/>
@@ -96,13 +81,6 @@
 			icon="link"
 		/> -->
 </section>
-<Flyout
-	show={showFlyout}
-	imgs={activeItem?.flyout.imgs ?? []}
-	content={activeItem?.flyout.content ?? ''}
-	title={activeItem?.title ?? ''}
-	on:close={closeFlyout}
-/>
 
 <style lang="scss">
 	@import '../../../../../sass/main.scss';
