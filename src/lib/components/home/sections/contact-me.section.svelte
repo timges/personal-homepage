@@ -1,7 +1,6 @@
 <section id="contact-me">
 	<h2>CONTACT ME</h2>
-	<aside>
-	</aside>
+	<aside />
 	<form class="contact-form">
 		<label for="name">Name</label>
 		<input name="name" type="text" placeholder="Your Name" />
@@ -35,7 +34,8 @@
 		line-height: $line-height-large;
 	}
 
-	input, textarea {
+	input,
+	textarea {
 		background-color: $color-bg-dark;
 		color: $color-primary;
 		border: 1px solid $color-primary;
@@ -76,6 +76,7 @@
 		border-radius: $border-radius-s;
 
 		&:hover {
+			background-color: $color-primary-hover;
 		}
 	}
 
@@ -86,5 +87,6 @@
 		flex-direction: column;
 		background-color: $color-bg-dark;
 		padding: $spacing-xl;
+		z-index: 100;
 	}
 </style>

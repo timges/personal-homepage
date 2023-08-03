@@ -5,7 +5,10 @@
 	let showBackToTop: boolean;
 </script>
 
-<NavBar on:exit-viewport={() => (showBackToTop = true)} on:enter-viewport={() => showBackToTop=false}/>
+<NavBar
+	on:exit-viewport={() => (showBackToTop = true)}
+	on:enter-viewport={() => (showBackToTop = false)}
+/>
 <Socials {showBackToTop} />
 
 <slot />
@@ -15,5 +18,12 @@
 	:root {
 		letter-spacing: $letter-spacing-l;
 		scroll-behavior: smooth;
+	}
+
+	:global(*) {
+		@font-face {
+			font-family: type-writer;
+			src: url('/fonts/type-writer.ttf');
+		}
 	}
 </style>

@@ -9,11 +9,11 @@
 <svelte:window bind:innerWidth={width} />
 <section>
 	<div class="cta-container">
-		<p class="cta-greeting">Hi <span style:font-size={'3rem'}>✌🏼</span></p>
+		<p class="cta-greeting">Hi!<span style:font-size={'3rem'}>✌🏼</span></p>
 		<p class="cta-greeting cta-greeting--name-paragraph">
 			my name is <span><h1>Tim Gesemann</h1></span>.
 		</p>
-		<p class="cta-greeting">I like to write code.</p>
+		<p class="cta-greeting">I turn coffee into code.</p>
 		<p class="cta-introduction">
 			I'm a Software Engineer with years of experience in developing and designing enterprise
 			software applications

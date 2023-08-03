@@ -18,7 +18,7 @@ export default [
 		id: '1',
 		title: 'Servicecam',
 		description:
-			'Application trying to enable car mechanics & dealerships to visually document errors and create offer for their customers with more than 10.000 users',
+			'Application, which enables car mechanics & dealerships to visually document errors and create offer for their customers with more than 10.000 users',
 		tags: ['React.js', 'AWS', 'Java', 'Kotlin', 'MySql', 'Node', 'React-Native'],
 		flyout: {
 			imgs: ['flyout/servicecam-1.png', 'flyout/servicecam-2.png', 'flyout/servicecam-3.png'],

@@ -2,7 +2,7 @@
 	import WorkSection from '../lib/components/home/sections/my-work/work.section.svelte';
 	import HeroSection from '../lib/components/home/sections/hero.section.svelte';
 	import SkillsSection from '../lib/components//home/sections/skills.section.svelte';
-	import Experience from '$lib/components/home/sections/experience.section.svelte';
+	import Experience from '$lib/components/home/sections/experience/experience.section.svelte';
 	import ContactMe from '$lib/components/home/sections/contact-me.section.svelte';
 </script>
 
@@ -10,10 +10,16 @@
 	<HeroSection />
 	<SkillsSection />
 	<WorkSection />
-	<Experience />
-	<ContactMe />
+	<section id="animation-container">
+		<Experience />
+		<!-- <ContactMe /> -->
+	</section>
 </main>
 
 <style lang="scss">
 	@import '../sass/main.scss';
+
+	section {
+		height: 10000px;
+	}
 </style>

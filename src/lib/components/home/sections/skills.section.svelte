@@ -1,37 +1,16 @@
 <script lang="ts">
-	import { tweened } from 'svelte/motion';
-	let sectionHeight: number = 0;
-	let section: HTMLElement;
-
-	//TODO: cleanup
-	const mousePosXPercentFromLeft = tweened(46, { duration: 50 });
-	const mousePosYPercentFromTop = tweened(0, { duration: 50 });
-	function handleMouseMove(event: MouseEvent) {
-		// $mousePosXPercentFromLeft = (event.clientX / window.innerWidth) * 100;
-		// $mousePosYPercentFromTop = (event.offsetY / sectionHeight) * 100;
-	}
-
-	$: clipPath = `polygon(100px 0, 100% 0, 100% 100%, 0 100%)`;
-	// $mousePosYPercentFromTop > 50
-	// 	? `polygon(0 0, 100% 0, 100% 100%, 100px 100%)`
-	// 	: `polygon(100px 0, 100% 0, 100% 100%, 0 100%)`;
+	let innerWidth: number;
+	$: clipPathVertical = `polygon(100px 0, 100% 0, 100% 100%, 0 100%)`;
+	$: clipPathHorizontal = `polygon(0 8%, 100% 0, 100% 100%, 0% 100%)`;
 </script>
 
-<section
-	id="about"
-	bind:this={section}
-	on:mousemove={handleMouseMove}
-	on:mouseenter={handleMouseMove}
-	bind:clientHeight={sectionHeight}
->
-	<div
-		class="overlay-dev"
-		style:width={`${$mousePosXPercentFromLeft + 30 >= 100 ? 100 : $mousePosXPercentFromLeft + 30}%`}
-	/>
+<svelte:window bind:innerWidth />
+<section id="about">
+	<div class="overlay-dev" style:width={`${46 + 30 >= 100 ? 100 : 50 + 30}%`} />
 	<div
 		class="overlay-design"
-		style:width={`${100 - $mousePosXPercentFromLeft}%`}
-		style:clip-path={clipPath}
+		style:width={`${100 - 46}%`}
+		style:clip-path={innerWidth >= 768 ? clipPathVertical : clipPathHorizontal}
 	/>
 	<div class="development">
 		<h2>DEVELOPMENT</h2>
@@ -46,10 +25,10 @@
 		<h2>DESIGN</h2>
 		<p>
 			Collaborating closely with talented designers awakened my curiosity for the principles of
-			design, fueling my wish to become a true full-stack creator. Witnessing how design
-			seamlessly intertwines with code inspired me to explore its possibilities, and I have been
-			learning and practicing design ever since. Embracing both disciplines empowers me to craft
-			exceptional and user-centered digital experiences
+			design, fueling my wish to become a true full-stack creator. Witnessing how design seamlessly
+			intertwines with code inspired me to explore its possibilities, and I have been learning and
+			practicing design ever since. Embracing both disciplines empowers me to craft exceptional and
+			user-centered digital experiences
 		</p>
 	</div>
 </section>
@@ -112,16 +91,33 @@
 	@media screen and (max-width: 768px) {
 		section {
 			display: flex;
+			position: relative;
 			flex-direction: column;
 			padding: $spacing-xxl $spacing-l;
 			gap: $spacing-xxl;
-		}
-		.development {
 		}
 
 		.design {
 			grid-column: 2 / 8;
 			grid-row: 5 / 9;
+		}
+
+		.overlay-dev,
+		.overlay-design {
+			position: absolute;
+			height: 55%;
+			width: 100% !important;
+			top: inherit;
+		}
+
+		.overlay-design {
+			background: $color-secondary;
+			bottom: 0;
+			transition: clip-path 0.1s ease-in-out;
+		}
+		.overlay-dev {
+			background: $color-primary;
+			top: 0;
 		}
 	}
 </style>
