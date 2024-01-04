@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { T, useFrame, useThrelte, type CurrentWritable } from '@threlte/core';
+	import { T, useFrame, useThrelte } from '@threlte/core';
 	import { Grid, useTexture } from '@threlte/extras';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -16,8 +16,8 @@
 	};
 
 	let cameraVector3: Vector3 = {
-		x: 10,
-		y: 21,
+		x: 8,
+		y: 10,
 		z: 24
 	};
 
@@ -26,6 +26,8 @@
 		y: 0,
 		z: 0
 	};
+
+	const scrollbarWidth = window.innerWidth - document.body.clientWidth;
 	let innerHeight: number = window.innerHeight;
 	let innerWidth: number = window.innerWidth;
 	let walkAnimTime = { time: 0 };
@@ -35,7 +37,7 @@
 	let characterActions: THREE.AnimationAction[];
 	let characterMixer: THREE.AnimationMixer;
 
-	$: renderer?.setSize(innerWidth, innerHeight);
+	$: renderer?.setSize(innerWidth - scrollbarWidth, innerHeight);
 	$: scene && $sky ? setupScene() : null;
 
 	useFrame(() => {
@@ -67,7 +69,7 @@
 
 	function updateRenderer() {
 		renderer?.setPixelRatio(window.devicePixelRatio);
-		renderer?.setSize(innerWidth, innerHeight);
+		renderer?.setSize(innerWidth - scrollbarWidth, innerHeight);
 	}
 
 	function setupScene() {
@@ -87,23 +89,11 @@
 	}}
 	aspect={innerWidth / innerHeight}
 />
-<!-- {#if $gltf}
-	<T castShadow is={$gltf.scene} position={[0, 0, 0]} rotation={[0, Math.PI + 10, 0]} />
-{/if} -->
 
 <ModelTim on:loaded={handleCharacterLoad} />
 <Terrain {terrainRotation} position={[0, 0.05, 0]} />
 <Clouds position={[-30,-5,15]} rotation={[0,.3,0]}/>
 <Clouds position{[5,0,0]} />
-<T.DirectionalLight intensity={0.2} position={[-5, 25, 10]} castShadow/>
-<!-- <T.AmbientLight intensity={.2} /> -->
-<T.HemisphereLight intensity={.5} />
-<!-- <T.Mesh position.y={1} castShadow>
-	<T.BoxGeometry args={[1, 2, 1]} />
-	<T.MeshStandardMaterial color="hotpink" />
-</T.Mesh>
--->
-<!-- <T.Mesh rotation.x={-Math.PI / 2} position={[0, 0.01, 0]} receiveShadow>
-	<T.CircleGeometry args={[6, 40]} />
-	<T.MeshStandardMaterial />
-</T.Mesh> -->
+<T.DirectionalLight intensity={0.7} position={[-5, 25, 10]} castShadow/>
+<T.AmbientLight intensity={.2} />
+<T.HemisphereLight intensity={1} />

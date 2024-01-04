@@ -33,13 +33,6 @@ Command: npx @threlte/gltf@0.0.5 terrain_small.glb --transform
           geometry={$gltf.nodes.Icosphere003_2.geometry}
           material={$gltf.materials['Material.003']}
         />
-        <T.Group name="forest-house" position={[0.64, 0.73, 0.48]} rotation={[0.75, 0.23, -0.67]} scale={0.05}>
-          <T.Mesh name="Cube" geometry={$gltf.nodes.Cube.geometry} material={$gltf.materials.house} />
-          <T.Mesh name="Cube_1" geometry={$gltf.nodes.Cube_1.geometry} material={$gltf.materials.roof} />
-          <T.Mesh name="Cube_2" geometry={$gltf.nodes.Cube_2.geometry} material={$gltf.materials.schornstein} />
-          <T.Mesh name="Cube_3" geometry={$gltf.nodes.Cube_3.geometry} material={$gltf.materials.door} />
-          <T.Mesh name="Cube_4" geometry={$gltf.nodes.Cube_4.geometry} material={$gltf.materials.darker} />
-        </T.Group>
         <T.Group name="mountain-poly" position={[-0.31, 0.69, 0.05]} rotation={[0.22, -0.2, 0.3]} scale={0.01}>
           <T.Mesh
             name="mesh_Group51674_12268Mountain3001"
@@ -49,7 +42,7 @@ Command: npx @threlte/gltf@0.0.5 terrain_small.glb --transform
           <T.Mesh
             name="mesh_Group51674_12268Mountain3001_1"
             geometry={$gltf.nodes.mesh_Group51674_12268Mountain3001_1.geometry}
-            material={$gltf.materials.door}
+            material={$gltf.materials['mountain-ice.001']}
           />
         </T.Group>
         <T.Group name="road-poly" rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={[1.01, 0.06, 1.01]}>
@@ -58,7 +51,11 @@ Command: npx @threlte/gltf@0.0.5 terrain_small.glb --transform
             geometry={$gltf.nodes.Cylinder001.geometry}
             material={$gltf.materials['Material.005']}
           />
-          <T.Mesh name="Cylinder001_1" geometry={$gltf.nodes.Cylinder001_1.geometry} material={$gltf.materials.door} />
+          <T.Mesh
+            name="Cylinder001_1"
+            geometry={$gltf.nodes.Cylinder001_1.geometry}
+            material={$gltf.materials['mountain-ice.001']}
+          />
         </T.Group>
         <T.Group name="tree-big005" position={[0.33, 0.84, 0.39]} rotation={[0.52, 0.1, -0.34]} scale={0.02}>
           <T.Mesh
@@ -190,6 +187,28 @@ Command: npx @threlte/gltf@0.0.5 terrain_small.glb --transform
             material={$gltf.materials['Material.034']}
           />
         </T.Group>
+        <T.Group name="tree-house" position={[0.67, 0.8, 0.5]} rotation={[-0.89, 0.69, -0.49]} scale={0.04}>
+          <T.Mesh
+            name="Cube013_Material001_0"
+            geometry={$gltf.nodes.Cube013_Material001_0.geometry}
+            material={$gltf.materials['Material.050']}
+          />
+          <T.Mesh
+            name="Cube013_Material001_0_1"
+            geometry={$gltf.nodes.Cube013_Material001_0_1.geometry}
+            material={$gltf.materials['Material.051']}
+          />
+          <T.Mesh
+            name="Cube013_Material001_0_2"
+            geometry={$gltf.nodes.Cube013_Material001_0_2.geometry}
+            material={$gltf.materials['Material.000']}
+          />
+          <T.Mesh
+            name="Cube013_Material001_0_3"
+            geometry={$gltf.nodes.Cube013_Material001_0_3.geometry}
+            material={$gltf.materials['Material.052']}
+          />
+        </T.Group>
         <T.Group name="tree-idk004" position={[0.43, 0.6, 0.66]} rotation={[0.85, 0.11, -0.41]} scale={0.01}>
           <T.Mesh
             name="Circle003_Material011_0006"
@@ -296,6 +315,14 @@ Command: npx @threlte/gltf@0.0.5 terrain_small.glb --transform
             material={$gltf.materials['Material.045']}
           />
         </T.Group>
+        <T.Mesh
+          name="university"
+          geometry={$gltf.nodes.university.geometry}
+          material={$gltf.materials.School}
+          position={[-0.46, -0.6, 0.58]}
+          rotation={[0.86, -0.46, 0.08]}
+          scale={0.02}
+        />
       </T.Group>
     </T.Group>
 
