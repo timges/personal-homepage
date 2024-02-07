@@ -23,10 +23,9 @@
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		grid-template-rows: $font-size-h2 repeat(7, 1fr);
-		column-gap: $spacing-l;
+		row-gap: $spacing-l;
 		position: relative;
 		padding: $spacing-xxl 0;
-		gap: $spacing-l;
 	}
 
 	h2 {
@@ -88,5 +87,12 @@
 		background-color: $color-bg-dark;
 		padding: $spacing-xl;
 		z-index: 100;
+		border-radius: $border-radius-s;
+	}
+	
+	@media screen and (max-width: 768px) {
+		.contact-form {
+			grid-column: 2 / 8;
+		}
 	}
 </style>

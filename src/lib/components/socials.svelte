@@ -59,6 +59,7 @@
 			svg {
 				transform: scale(1.1);
 				transform: translateY(-2px);
+				filter: brightness(1.2)
 			}
 		}
 	}

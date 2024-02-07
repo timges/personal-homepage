@@ -1,7 +1,7 @@
 <script>
 	import WorkSection from '../lib/components/home/sections/my-work/work.section.svelte';
 	import HeroSection from '../lib/components/home/sections/hero.section.svelte';
-	import SkillsSection from '../lib/components//home/sections/skills.section.svelte';
+	import SkillsSection from '../lib/components/home/sections/skills/skills.section.svelte';
 	import Experience from '$lib/components/home/sections/experience/experience.section.svelte';
 	import ContactMe from '$lib/components/home/sections/contact-me.section.svelte';
 </script>
@@ -12,14 +12,14 @@
 	<WorkSection />
 	<section id="animation-container">
 		<Experience />
-		<!-- <ContactMe /> -->
 	</section>
+	<ContactMe />
 </main>
 
 <style lang="scss">
 	@import '../sass/main.scss';
 
 	section {
-		height: 10000px;
+		// height: 10000px;
 	}
 </style>

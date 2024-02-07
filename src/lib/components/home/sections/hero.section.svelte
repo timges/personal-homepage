@@ -20,7 +20,7 @@
 		</p>
 		<button on:click={handleCtaClick} class="cta-button">GET IN TOUCH</button>
 	</div>
-	<img src={width > 768 ? '/tim.png' : '/tim-cut.png'} alt="profile pcicture" />
+	<img src={width > 768 ? '/tim-2.png' : '/tim-cut.png'} alt="profile pcicture" />
 </section>
 
 <style lang="scss">
@@ -37,7 +37,7 @@
 
 	img {
 		position: relative;
-		width: 400px;
+		width: 45vh;
 		grid-column: 5 / 9;
 		grid-row: 2/9;
 		justify-content: end;
@@ -67,7 +67,7 @@
 
 	.cta-greeting {
 		font-size: $font-size-h3;
-		color: $color-secondary;
+		color: darken($color-secondary,10);
 
 		&--name-paragraph {
 			white-space: nowrap;
@@ -79,8 +79,8 @@
 	}
 
 	.cta-button {
-		background-color: transparent;
-		color: $color-primary;
+		background-color: $color-primary;
+		color: $color-text-on-primary;
 		border: 1px solid $color-primary;
 		padding: $spacing-m $spacing-xxl;
 		border-radius: $border-radius-s;
@@ -90,8 +90,10 @@
 		transition: background-color 0.2s ease-in-out;
 
 		&:hover {
-			background-color: $color-primary;
-			color: $color-text-on-primary;
+			background-color: rgba($color-primary, 0.9);
+		}
+		&:active {
+			background-color: rgba($color-primary, 0.8);
 		}
 	}
 
@@ -110,7 +112,7 @@
 
 	@media screen and (max-width: 768px) {
 		.cta-container {
-			margin-top: $spacing-xxl;
+			margin-top: $spacing-l;
 			display: flex;
 			flex-direction: column;
 		}
@@ -119,7 +121,7 @@
 			display: flex;
 			flex-direction: column-reverse;
 			align-items: center;
-			padding: $spacing-xxl;
+			padding: $spacing-l;
 		}
 
 		img {

@@ -5,11 +5,11 @@
 <nav id="nav" use:viewport on:exit-viewport on:enter-viewport>
 	<div>
 		<a href="/">
-			<h1>t.</h1>
+			<p>t</p>
 		</a>
 	</div>
 	<ul>
-		<li><a href="/#about">About</a></li>
+		<li><a href="/#skills">Skills</a></li>
 		<li><a href="/#work">My Work</a></li>
 		<li><a href="/#experience">Experience</a></li>
 		<li><a href="/#contact-me">Contact</a></li>
@@ -66,7 +66,7 @@
 		all: unset;
 		cursor: pointer;
 	}
-	h1 {
+	p {
 		font-size: 2.5rem;
 		color: $color-primary;
 		font-weight: normal;
