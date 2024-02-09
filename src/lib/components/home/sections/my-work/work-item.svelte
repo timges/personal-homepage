@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { createEventDispatcher } from "svelte";
+	import { createEventDispatcher } from 'svelte';
 
-
-	export let id: string;
 	export let title: string;
 	export let description: string;
 	export let tags: string[];
@@ -12,15 +10,11 @@
 	const dispatch = createEventDispatcher();
 
 	function dispatchContainerClickEvent() {
-		dispatch("container-click");
+		dispatch('container-click');
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<div
-	class="container"
-	on:click={dispatchContainerClickEvent}
->
+<button class="container" on:click={dispatchContainerClickEvent}>
 	<h3>{title}</h3>
 	<p>{description}</p>
 	<div class="meta-container">
@@ -47,21 +41,43 @@
 			</a>
 		</div>
 	</div>
-</div>
+</button>
 
 <style lang="scss">
 	@import '../../../../../sass/main.scss';
 
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		list-style: none;
+		margin: $spacing-m 0;
+
+		li {
+			margin-right: $spacing-m;
+			color: rgba($color-text-on-bg-light, 0.3);
+			font-weight: lighter;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	svg {
+		fill: $color-primary;
+	}
 	.container {
+		all: unset;
 		display: flex;
 		cursor: pointer;
 		flex-direction: column;
 		letter-spacing: $letter-spacing-l;
 		background-color: $color-bg-dark;
 		padding: $spacing-l;
-		height: 350px;
 		border-radius: $border-radius-s;
-		transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+		transition:
+			background-color 0.2s ease-in-out,
+			transform 0.2s ease-in-out;
+		height: 350px;
 
 		&:hover {
 			background-color: $color-secondary;
@@ -85,14 +101,6 @@
 	.icon {
 		align-self: flex-end;
 	}
-	svg {
-		fill: $color-primary;
-	}
-	h3 {
-		font-size: $font-size-h3;
-		margin-bottom: $spacing-m;
-		font-weight: 400;
-	}
 	.container > p {
 		min-height: 150px;
 	}
@@ -103,21 +111,9 @@
 		flex-direction: column;
 		justify-content: space-between;
 	}
-
-	ul {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		list-style: none;
-		margin: $spacing-m 0;
-
-		li {
-			margin-right: $spacing-m;
-			color: rgba($color-text-on-bg-light, 0.3);
-			font-weight: lighter;
-			&:last-child {
-				margin-right: 0;
-			}
-		}
+	h3 {
+		font-size: $font-size-h3;
+		margin-bottom: $spacing-m;
+		font-weight: normal;
 	}
 </style>

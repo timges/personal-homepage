@@ -69,7 +69,8 @@ export default [
 	{
 		id: '5',
 		title: 'Volkswagen GroupUI',
-		description: 'Design system and component library of the Volkswagen Group. It is the standard for all internal Volkswagen applications. Winner of the RedDot Design award in 2019',
+		description:
+			'Design system and component library of the Volkswagen Group. It is the standard for all internal Volkswagen applications. Winner of the RedDot Design award in 2019',
 		tags: ['Typescript', 'Stencil.js', 'Figma', 'Github Actions', 'AWS', 'Svelte'],
 		flyout: {
 			imgs: ['flyout/groupui-1.png', 'flyout/groupui-2.png', 'flyout/groupui-3.png'],
@@ -82,7 +83,8 @@ export default [
 	{
 		id: '6',
 		title: 'Personal Website',
-		description: 'This is the website you are currently visiting. Built with SvelteKit, Typescript & SCSS. Hosted on Vercel.',
+		description:
+			'This is the website you are currently visiting. Built with SvelteKit, Typescript & SCSS. Hosted on Vercel.',
 		tags: ['Typescript', 'SvelteKit', 'SCSS', 'Github-Actions', 'Vercel'],
 		flyout: {
 			imgs: ['flyout/website-1.png', 'flyout/website-2.png', 'flyout/website-3.png'],

@@ -34,6 +34,12 @@
 		display: flex;
 		gap: $spacing-xl;
 	}
+	a {
+		text-decoration: none;
+		color: $color-primary;
+		transition: color 0.2s ease-in-out;
+		padding: $spacing-s 0;
+	}
 	li {
 		cursor: pointer;
 		transition: transform 0.2s ease-in-out;
@@ -55,12 +61,6 @@
 				transition: width 0.2s ease-in-out;
 			}
 		}
-	}
-	a {
-		text-decoration: none;
-		color: $color-primary;
-		transition: color 0.2s ease-in-out;
-		padding: $spacing-s 0;
 	}
 	button {
 		all: unset;

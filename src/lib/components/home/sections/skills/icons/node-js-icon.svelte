@@ -79,6 +79,6 @@
 	svg {
 		width: $icon-size-xl;
 		height: $icon-size-xl;
-    min-width: $icon-size-l;
+		min-width: $icon-size-l;
 	}
 </style>

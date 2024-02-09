@@ -39,7 +39,16 @@
 
 <style lang="scss">
 	@import '../../../../sass/main.scss';
-
+	.contact-form {
+		grid-column: 4 / 8;
+		grid-row: 2 / span all;
+		display: flex;
+		flex-direction: column;
+		background-color: $color-bg-dark;
+		padding: $spacing-xl;
+		z-index: 100;
+		border-radius: $border-radius-s;
+	}
 	section {
 		max-width: 100%;
 		background-color: $color-bg-light;
@@ -54,6 +63,11 @@
 	h2 {
 		grid-column: 2 / span all;
 		line-height: $line-height-large;
+	}
+
+	textarea {
+		height: 200px;
+		resize: none;
 	}
 
 	input,
@@ -72,11 +86,6 @@
 		&:not(:last-child) {
 			margin-bottom: $spacing-l;
 		}
-	}
-
-	textarea {
-		height: 200px;
-		resize: none;
 	}
 
 	label {
@@ -106,20 +115,10 @@
 		}
 	}
 
-	.contact-form {
-		grid-column: 4 / 8;
-		grid-row: 2 / span all;
-		display: flex;
-		flex-direction: column;
-		background-color: $color-bg-dark;
-		padding: $spacing-xl;
-		z-index: 100;
-		border-radius: $border-radius-s;
-	}
 	svg {
 		width: $icon-size-s;
 		height: $icon-size-s;
-		fill: white;
+		fill: $color-text-on-primary;
 	}
 
 	p {

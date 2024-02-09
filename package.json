@@ -10,8 +10,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"lint": "prettier --check . && eslint .",
+		"lint:scss": "stylelint \"src/**/*.{css,scss,svelte}\"",
+		"format": "prettier . --write ."
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.40.1",
@@ -23,9 +24,15 @@
 		"eslint": "^8.55.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
+		"postcss": "^8.4.35",
+		"postcss-html": "^1.6.0",
 		"prettier": "^3.1.0",
 		"prettier-plugin-svelte": "^3.1.2",
 		"sass": "^1.69.5",
+		"stylelint": "^16.2.1",
+		"stylelint-config-recommended-scss": "^14.0.0",
+		"stylelint-config-standard": "^36.0.0",
+		"stylelint-scss": "^6.1.0",
 		"svelte": "^4.2.8",
 		"svelte-check": "^3.6.2",
 		"svelte-preprocess": "^5.1.1",

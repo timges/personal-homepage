@@ -15,11 +15,3 @@
 	</section>
 	<ContactMe />
 </main>
-
-<style lang="scss">
-	@import '../sass/main.scss';
-
-	section {
-		// height: 10000px;
-	}
-</style>

@@ -250,6 +250,7 @@
 		width: 100%;
 		// position: sticky;
 		top: 0;
+		padding: 0 $spacing-l;
 	}
 
 	div {
@@ -260,6 +261,8 @@
 	svg {
 		stroke-dashoffset: 3000;
 		stroke-dasharray: 3000;
+		width: 80%;
+		height: 80%;
 		* {
 			stroke: $color-primary;
 		}
@@ -269,6 +272,7 @@
 	.ball-2019,
 	.ball-2020,
 	.ball-2021 {
+		opacity: 0;
 		path {
 			fill: $color-primary;
 		}
@@ -282,13 +286,6 @@
 	}
 	.text {
 		fill: $color-primary;
-	}
-
-	.ball-2014,
-	.ball-2019,
-	.ball-2020,
-	.ball-2021 {
-		opacity: 0;
 	}
 
 	@media screen and (max-width: 768px) {

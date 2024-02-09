@@ -48,19 +48,30 @@
 
 <style lang="scss">
 	@import '../../sass/main.scss';
+	.socials {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: $spacing-m;
+		position: fixed;
+		bottom: 0;
+		left: $spacing-m;
+		background: transparent;
+		z-index: 99;
 
-	a {
-		text-decoration: none;
-		cursor: pointer;
-		height: $icon-size-m;
-		width: $icon-size-m;
+		svg {
+			transition: all ease-in-out 0.2s;
+			fill: $color-primary;
+		}
 
-		&:hover {
-			svg {
-				transform: scale(1.1);
-				transform: translateY(-2px);
-				fill: $color-secondary;
-			}
+		svg:last-child {
+			margin-bottom: $spacing-m;
+		}
+		&::after {
+			content: '';
+			width: 2px;
+			height: 70px;
+			background: $color-primary;
 		}
 	}
 	.back-to-top {
@@ -69,6 +80,11 @@
 		left: $spacing-m;
 		z-index: 99;
 
+		p {
+			margin-top: $spacing-s;
+			color: #2f355c;
+			writing-mode: vertical-lr;
+		}
 		svg {
 			fill: $color-primary;
 			width: 40px;
@@ -94,38 +110,21 @@
 				}
 			}
 		}
-
-		p {
-			margin-top: $spacing-s;
-			color: #2f355c;
-			writing-mode: vertical-lr;
-		}
 	}
-	.socials {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: $spacing-m;
-		position: fixed;
-		bottom: 0;
-		left: $spacing-m;
-		background: transparent;
 
-		svg {
-			transition: all ease-in-out 0.2s;
-			fill: $color-primary;
-		}
+	a {
+		text-decoration: none;
+		cursor: pointer;
+		height: $icon-size-m;
+		width: $icon-size-m;
 
-		svg:last-child {
-			margin-bottom: $spacing-m;
+		&:hover {
+			svg {
+				transform: scale(1.1);
+				transform: translateY(-2px);
+				fill: $color-secondary;
+			}
 		}
-		z-index: 99;
-	}
-	.socials::after {
-		content: '';
-		width: 2px;
-		height: 70px;
-		background: $color-primary;
 	}
 
 	@media screen and (max-width: 768px) {
