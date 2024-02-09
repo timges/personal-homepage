@@ -6,7 +6,7 @@
 <aside>
 	{#if showBackToTop}
 		<div class="back-to-top" in:slide|global out:slide|global>
-			<button on:click={() => window.scrollTo({top: 0})}>
+			<button on:click={() => window.scrollTo({ top: 0 })}>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 					><path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" /></svg
 				>
@@ -59,7 +59,7 @@
 			svg {
 				transform: scale(1.1);
 				transform: translateY(-2px);
-				filter: brightness(1.2)
+				fill: $color-secondary;
 			}
 		}
 	}
@@ -67,17 +67,15 @@
 		position: fixed;
 		flex-direction: column;
 		left: $spacing-m;
-		mix-blend-mode: difference;
 		z-index: 99;
-		
+
 		svg {
-			transition: all ease-in-out 0.2s;
-			fill: #dab51e;
+			fill: $color-primary;
 			width: 40px;
 			height: 40px;
 			animation: bounce 1s infinite;
 		}
-		
+
 		button {
 			all: unset;
 			display: flex;
@@ -86,14 +84,20 @@
 			cursor: pointer;
 			transition: all ease-in-out 0.2s;
 
-			&:hover{
+			&:hover {
 				transform: scale(1.05);
+				svg {
+					fill: $color-secondary;
+				}
+				p {
+					color: $color-secondary;
+				}
 			}
 		}
 
 		p {
 			margin-top: $spacing-s;
-			color: #dab51e;
+			color: #2f355c;
 			writing-mode: vertical-lr;
 		}
 	}
@@ -106,11 +110,10 @@
 		bottom: 0;
 		left: $spacing-m;
 		background: transparent;
-		mix-blend-mode: difference;
 
 		svg {
 			transition: all ease-in-out 0.2s;
-			fill: #dab51e;
+			fill: $color-primary;
 		}
 
 		svg:last-child {
@@ -122,7 +125,7 @@
 		content: '';
 		width: 2px;
 		height: 70px;
-		background: #dab51e;
+		background: $color-primary;
 	}
 
 	@media screen and (max-width: 768px) {

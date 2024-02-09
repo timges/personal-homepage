@@ -2,14 +2,10 @@
 	<h2>CONTACT ME</h2>
 	<aside />
 	<form class="contact-form">
-		<label for="name">Name</label>
-		<input name="name" type="text" placeholder="Your Name" />
-		<label for="e-mail">E-Mail</label>
-		<input name="e-mail" type="text" placeholder="Your e-mail address" />
-		<label for="subject">Subejct</label>
-		<input name="subject" type="text" placeholder="Your subject" />
-		<label for="message">Message</label>
-		<textarea name="message" placeholder="Your message" />
+		<input name="name" type="text" placeholder="name" />
+		<input name="e-mail" type="text" placeholder="e-mail address" />
+		<input name="subject" type="text" placeholder="subject" />
+		<textarea name="message" placeholder="message" />
 		<button on:click|preventDefault type="submit" class="submit-btn"
 			>Send <svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +31,10 @@
 			</svg></button
 		>
 	</form>
+	<p>
+		Don't hesitate to reach out with any questions or ideas. I'm here to listen, offer insights, and
+		have enriching discussions. Your message could spark something wonderful—let's start a dialogue!
+	</p>
 </section>
 
 <style lang="scss">
@@ -46,7 +46,7 @@
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		grid-template-rows: $font-size-h2 repeat(7, 1fr);
-		row-gap: $spacing-l;
+		gap: $spacing-l;
 		position: relative;
 		padding: $spacing-xxl 0;
 	}
@@ -62,9 +62,9 @@
 		color: $color-primary;
 		border: 1px solid $color-primary;
 		padding: $spacing-m;
-		font-size: $font-size-b2;
-		font-family: Roboto, sans-serif;
-
+		font-size: $font-size-b1;
+		font-family: inter, sans-serif;
+		letter-spacing: $letter-spacing-m;
 		&:focus {
 			outline: 1px solid $color-primary;
 		}
@@ -99,7 +99,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: $spacing-s;
+		gap: $spacing-m;
 
 		&:hover {
 			background-color: $color-primary-hover;
@@ -122,12 +122,37 @@
 		fill: white;
 	}
 
+	p {
+		grid-column: 2 / 4;
+		grid-row: 4 / span all;
+		font-size: $font-size-b1;
+		line-height: $line-height-large;
+	}
+
 	@media screen and (max-width: 768px) {
+		section {
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+		}
+		h2 {
+			margin-left: $spacing-l;
+		}
 		.contact-form {
-			grid-column: 2 / 8;
+			background-color: transparent;
+			order: 3;
+			padding: $spacing-l;
 		}
 		textarea {
 			height: 100px;
+		}
+		input,
+		textarea {
+			padding: $spacing-m;
+		}
+		p {
+			order: 2;
+			padding: $spacing-l;
 		}
 	}
 </style>

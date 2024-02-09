@@ -9,16 +9,16 @@
 <svelte:window bind:innerWidth={width} />
 <section>
 	<div class="cta-container">
-		<p class="cta-greeting">Hi!<span style:font-size={'3rem'}>✌🏼</span></p>
+		<p class="cta-greeting cta-greeting--hi">Hi!<span style:font-size={'3rem'}>✌🏼</span></p>
 		<p class="cta-greeting cta-greeting--name-paragraph">
 			my name is <span><h1>Tim Gesemann</h1></span>.
 		</p>
 		<p class="cta-greeting">I turn coffee into code.</p>
 		<p class="cta-introduction">
 			I'm a Software Engineer with years of experience in developing and designing enterprise
-			software applications
+			software solutions
 		</p>
-		<button on:click={handleCtaClick} class="cta-button">GET IN TOUCH</button>
+		<button on:click={handleCtaClick} class="cta-button"><div></div><p>GET IN TOUCH<p></button>
 	</div>
 	<img src={width > 768 ? '/tim-2.png' : '/tim-cut.png'} alt="profile pcicture" />
 </section>
@@ -67,10 +67,14 @@
 
 	.cta-greeting {
 		font-size: $font-size-h3;
-		color: darken($color-secondary,10);
+		// color: darken($color-secondary,10);
+		color: $color-secondary;
 
 		&--name-paragraph {
 			white-space: nowrap;
+		}
+		&--hi {
+			font-size: $font-size-h1;
 		}
 	}
 
@@ -79,21 +83,39 @@
 	}
 
 	.cta-button {
+		position: relative;
 		background-color: $color-primary;
 		color: $color-text-on-primary;
-		border: 1px solid $color-primary;
 		padding: $spacing-m $spacing-xxl;
+		border: none;
 		border-radius: $border-radius-s;
 		font-size: $font-size-b1;
 		font-weight: bold;
 		cursor: pointer;
 		transition: background-color 0.2s ease-in-out;
 
-		&:hover {
-			background-color: rgba($color-primary, 0.9);
+		p {
+			position: relative;
+			margin: 0 !important;
+			z-index: 2;
 		}
-		&:active {
-			background-color: rgba($color-primary, 0.8);
+
+		div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 0%;
+			background-color: $color-secondary;
+			z-index: 1;
+			border-radius: $border-radius-s;
+			transition: width 0.4s ease-in-out;
+		}
+
+		&:hover {
+			div {
+				width: 100%;
+			}
 		}
 	}
 
@@ -128,6 +150,7 @@
 			width: 200px;
 			height: 200px;
 			border-radius: $border-radius-circle;
+			display: none;
 		}
 
 		@media screen and (max-width: 480px) {
@@ -148,6 +171,10 @@
 
 				h1 {
 					font-size: $font-size-h3;
+				}
+
+				&--hi {
+					font-size: $font-size-h2;
 				}
 			}
 

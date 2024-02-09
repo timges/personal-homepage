@@ -18,7 +18,7 @@ export default [
 		id: '1',
 		title: 'Servicecam',
 		description:
-			'Application, which enables car mechanics & dealerships to visually document errors and create offer for their customers with more than 10.000 users',
+			'Servicecam enables car mechanics & dealerships to visually document errors and create offers for their customers. It\'s used by more than 20.000 delerships.',
 		tags: ['React.js', 'AWS', 'Java', 'Kotlin', 'MySql', 'Node.js', 'React-Native'],
 		flyout: {
 			imgs: ['flyout/servicecam-1.png', 'flyout/servicecam-2.png', 'flyout/servicecam-3.png'],
@@ -32,7 +32,7 @@ export default [
 		id: '2',
 		title: 'TimeTracker',
 		description:
-			'Mobile Application that allows users to conveniently track their working ours and calculate a billable amount',
+			'Mobile App that assists the user by conveniently tracking their working hours and calculating the billable project time for their customers.',
 		tags: ['React-Native', 'Typescript', 'Sqlite'],
 		flyout: {
 			imgs: ['flyout/timetracker-1.png', 'flyout/timetracker-2.png', 'flyout/timetracker-3.png'],
@@ -69,7 +69,7 @@ export default [
 	{
 		id: '5',
 		title: 'Volkswagen GroupUI',
-		description: 'Design System of the Volkswagen Group. It won the RedDot Design award of 2019',
+		description: 'Design system and component library of the Volkswagen Group. It is the standard for all internal Volkswagen applications. Winner of the RedDot Design award in 2019',
 		tags: ['Typescript', 'Stencil.js', 'Figma', 'Github Actions', 'AWS', 'Svelte'],
 		flyout: {
 			imgs: ['flyout/groupui-1.png', 'flyout/groupui-2.png', 'flyout/groupui-3.png'],
@@ -82,7 +82,7 @@ export default [
 	{
 		id: '6',
 		title: 'Personal Website',
-		description: 'This website you are currently visiting. Built with SvelteKit, Typescript & SCSS',
+		description: 'This is the website you are currently visiting. Built with SvelteKit, Typescript & SCSS. Hosted on Vercel.',
 		tags: ['Typescript', 'SvelteKit', 'SCSS', 'Github-Actions', 'Vercel'],
 		flyout: {
 			imgs: ['flyout/website-1.png', 'flyout/website-2.png', 'flyout/website-3.png'],
