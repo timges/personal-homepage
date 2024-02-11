@@ -257,15 +257,14 @@
 		display: flex;
 		justify-content: center;
 	}
-
+	.timeline-path {
+		stroke: $color-primary;
+	}
 	svg {
 		stroke-dashoffset: 3000;
 		stroke-dasharray: 3000;
 		width: 80%;
 		height: 80%;
-		* {
-			stroke: $color-primary;
-		}
 	}
 
 	.ball-2014,
@@ -292,6 +291,10 @@
 		section {
 			height: 50%;
 			overflow: hidden;
+		}
+		svg {
+			width: 100%;
+			height: 100%;
 		}
 	}
 </style>

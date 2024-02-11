@@ -12,7 +12,6 @@
 		<p class="cta-greeting cta-greeting--hi">Hi!<span style:font-size={'3rem'}>✌🏼</span></p>
 		<p class="cta-greeting cta-greeting--name-paragraph">my name is</p>
 		<h1>Tim Gesemann</h1>
-		<p>.</p>
 		<p class="cta-greeting">I turn coffee into code.</p>
 		<p class="cta-introduction">
 			I'm a Software Engineer with years of experience in developing and designing enterprise
@@ -113,6 +112,7 @@
 		font-size: $font-size-h2;
 		color: $color-primary;
 		font-weight: bold;
+		padding: $spacing-s 0;
 	}
 	@media screen and (max-width: 1080px) {
 		img {

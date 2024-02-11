@@ -2,6 +2,7 @@
 	import { emailSchema } from '$lib/util/email-schema';
 	import { fly } from 'svelte/transition';
 	import { superForm } from 'sveltekit-superforms/client';
+	import FormField from './form-field.svelte';
 
 	export let data;
 	const { form, enhance, errors } = superForm(data.form, {
@@ -25,32 +26,23 @@
 	<h2>CONTACT ME</h2>
 	<aside />
 	<form method="POST" class="contact-form" use:enhance>
-		<input
-			name="name"
-			type="text"
-			placeholder="name"
-			bind:value={$form.name}
-			aria-invalid={!!$errors.name}
-		/>
-		<input
+		<FormField {form} {errors} name="name" placeholder="name" type="text" maxLength={50} />
+		<FormField
+			{form}
+			{errors}
 			name="email"
-			type="text"
 			placeholder="e-mail address"
-			bind:value={$form.email}
-			aria-invalid={!!$errors.email}
-		/>
-		<input
-			name="subject"
 			type="text"
-			placeholder="subject"
-			bind:value={$form.subject}
-			aria-invalid={!!$errors.subject}
+			maxLength={50}
 		/>
-		<textarea
+		<FormField {form} {errors} name="subject" placeholder="subject" type="text" maxLength={50} />
+		<FormField
+			{form}
+			{errors}
 			name="message"
 			placeholder="message"
-			bind:value={$form.message}
-			aria-invalid={!!$errors.message}
+			type="textarea"
+			maxLength={500}
 		/>
 		<button type="submit" style:background-color={submissionSuccessful ? 'green' : undefined}>
 			<div class="button-content">
@@ -94,6 +86,7 @@
 		grid-row: 2 / span all;
 		display: flex;
 		flex-direction: column;
+		gap: $spacing-l;
 		background-color: $color-bg-dark;
 		padding: $spacing-xl;
 		z-index: 100;
@@ -113,38 +106,6 @@
 	h2 {
 		grid-column: 2 / span all;
 		line-height: $line-height-large;
-	}
-
-	textarea {
-		height: 200px;
-		resize: none;
-	}
-
-	input,
-	textarea {
-		background-color: $color-bg-dark;
-		color: $color-primary;
-		border: 1px solid $color-primary;
-		padding: $spacing-m;
-		font-size: $font-size-b1;
-		font-family: inter, sans-serif;
-		letter-spacing: $letter-spacing-m;
-		&:focus {
-			outline: 1px solid $color-primary;
-		}
-
-		&:not(:last-child) {
-			margin-bottom: $spacing-l;
-		}
-
-		&[aria-invalid='true']:not(:focus) {
-			border: 1px solid $color-error;
-		}
-	}
-
-	label {
-		font-size: $font-size-b1;
-		margin-bottom: $spacing-s;
 	}
 
 	button {
