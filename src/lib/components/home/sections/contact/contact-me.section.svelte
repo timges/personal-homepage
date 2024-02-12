@@ -3,8 +3,13 @@
 	import { fly } from 'svelte/transition';
 	import { superForm } from 'sveltekit-superforms/client';
 	import FormField from './form-field.svelte';
+	import type { SuperValidated } from 'sveltekit-superforms';
+	import { tick } from 'svelte';
 
-	export let data;
+	export let data: { form: SuperValidated<any> };
+
+	let formRef: HTMLFormElement;
+
 	const { form, enhance, errors } = superForm(data.form, {
 		validationMethod: 'auto',
 		validators: emailSchema,
@@ -13,19 +18,37 @@
 			if (result.status === 200) {
 				submissionSuccessful = true;
 			}
+			if (result.status === 401) {
+				console.log('invalid captcha');
+			}
+			if (result.status === 500) {
+				console.log('server error');
+			}
 		},
 		resetForm: true
 	});
-
 	let submissionSuccessful = false;
-
 	$: submissionSuccessful && setTimeout(() => (submissionSuccessful = false), 1000);
+
+	function onSubmitButtonClick() {
+		// @ts-ignore
+		grecaptcha.ready(function () {
+			// @ts-ignore
+			grecaptcha
+				.execute('6LdrcHApAAAAAL_j-HWDi5isOi1zUb-X85HbTnoB', { action: 'submit' })
+				.then(async function (token: string) {
+					$form.token = token;
+					await tick();
+					formRef.requestSubmit();
+				});
+		});
+	}
 </script>
 
 <section id="contact-me">
 	<h2>CONTACT ME</h2>
 	<aside />
-	<form method="POST" class="contact-form" use:enhance>
+	<form method="POST" class="contact-form" use:enhance bind:this={formRef} on:submit|preventDefault>
 		<FormField {form} {errors} name="name" placeholder="name" type="text" maxLength={50} />
 		<FormField
 			{form}
@@ -44,7 +67,12 @@
 			type="textarea"
 			maxLength={500}
 		/>
-		<button type="submit" style:background-color={submissionSuccessful ? 'green' : undefined}>
+		<input type="hidden" name="token" bind:value={$form.token} />
+		<button
+			type="submit"
+			style:background-color={submissionSuccessful ? 'green' : undefined}
+			on:click|preventDefault={onSubmitButtonClick}
+		>
 			<div class="button-content">
 				{#if submissionSuccessful}
 					<svg
@@ -72,6 +100,11 @@
 				{/if}
 			</div>
 		</button>
+		<div class="re-captcha-disclaimer">
+			This site is protected by reCAPTCHA and the Google
+			<a href="https://policies.google.com/privacy">Privacy Policy</a> and
+			<a href="https://policies.google.com/terms">Terms of Service</a> apply.
+		</div>
 	</form>
 	<p>
 		Don't hesitate to reach out with any questions or ideas. I'm here to listen, offer insights, and
@@ -151,6 +184,14 @@
 		grid-row: 4 / span all;
 		font-size: $font-size-b1;
 		line-height: $line-height-large;
+	}
+	.re-captcha-disclaimer {
+		font-size: $font-size-small;
+		color: $color-light-fade;
+		a {
+			color: $color-primary;
+		}
+		min-width: 80%;
 	}
 
 	@media screen and (max-width: 768px) {

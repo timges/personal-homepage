@@ -11,9 +11,15 @@
 	{#if type === 'textarea'}
 		<textarea {name} bind:value={$form[name]} {placeholder} aria-invalid={!!$errors[name]} />
 	{:else}
-		<input {name} type="text" {placeholder} bind:value={$form[name]} aria-invalid={!!$errors[name]} />
+		<input
+			{name}
+			type="text"
+			{placeholder}
+			bind:value={$form[name]}
+			aria-invalid={!!$errors[name]}
+		/>
 	{/if}
-	<sub>{$form[name].length}/{maxLength}</sub>
+	<small>{$form[name].length}/{maxLength}</small>
 </fieldset>
 
 <style lang="scss">
@@ -55,18 +61,21 @@
 
 	fieldset {
 		position: relative;
+		display: flex;
+		align-items: center;
 		border: none;
 		width: 100%;
-		sub {
+		height: 100%;
+		small {
 			position: absolute;
 			bottom: 0;
 			right: 0;
 			color: black;
-			font-size: $font-size-sub;
+			font-size: $font-size-small;
 			padding: $spacing-s;
 		}
 		:not(:focus) {
-			& ~ sub {
+			& ~ small {
 				visibility: hidden;
 			}
 		}
