@@ -69,7 +69,7 @@
 	});
 </script>
 
-<section>
+<section id="experience">
 	<div>
 		<svg
 			class="timeline-svg"
