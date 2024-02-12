@@ -142,9 +142,6 @@
 		}
 
 		img {
-			width: 200px;
-			height: 200px;
-			border-radius: $border-radius-circle;
 			display: none;
 		}
 
@@ -153,10 +150,6 @@
 				padding: $spacing-m;
 			}
 
-			img {
-				width: 150px;
-				height: 150px;
-			}
 			.cta-container {
 				margin-top: $spacing-m;
 			}
@@ -167,10 +160,6 @@
 				&--hi {
 					font-size: $font-size-h2;
 				}
-			}
-
-			.cta-introduction {
-				max-width: 250px;
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Socials from '$lib/components/socials.svelte';
 	import NavBar from '../lib/components/nav-bar.svelte';
-	
+
 	let showBackToTop: boolean;
 </script>
 
@@ -25,5 +25,8 @@
 			font-family: type-writer;
 			src: url('/fonts/type-writer.ttf');
 		}
+	}
+	:global(.grecaptcha-badge) {
+		visibility: hidden;
 	}
 </style>

@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+	<title>CSS Logo</title>
 	<path fill="#264de4" d="M71.357 460.819L30.272 0h451.456l-41.129 460.746L255.724 512z" />
 	<path fill="#2965f1" d="M405.388 431.408l35.148-393.73H256v435.146z" />
 	<path

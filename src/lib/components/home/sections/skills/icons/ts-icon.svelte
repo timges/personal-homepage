@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 512"
-	><rect fill="#3178c6" height="512" rx="50" width="512" /><rect
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 512">
+	<title>Typescript Logo</title>
+	<rect fill="#3178c6" height="512" rx="50" width="512" /><rect
 		fill="#3178c6"
 		height="512"
 		rx="50"

@@ -2,13 +2,13 @@
 	import AwsIcon from './icons/aws-icon.svelte';
 	import CssIcon from './icons/css-icon.svelte';
 	import HtmlIcon from './icons/html-icon.svelte';
+	import JavaIcon from './icons/java-icon.svelte';
+	import MySqlIcon from './icons/my-sql-icon.svelte';
 	import NodeJsIcon from './icons/node-js-icon.svelte';
 	import ReactIcon from './icons/react-icon.svelte';
 	import TsIcon from './icons/ts-icon.svelte';
 
 	let innerWidth: number;
-	$: clipPathVertical = `polygon(100px 0, 100% 0, 100% 100%, 0 100%)`;
-	$: clipPathHorizontal = `polygon(0 8%, 100% 0, 100% 100%, 0% 100%)`;
 </script>
 
 <svelte:window bind:innerWidth />
@@ -21,6 +21,8 @@
 		<HtmlIcon />
 		<CssIcon />
 		<NodeJsIcon />
+		<JavaIcon />
+		<MySqlIcon />
 	</div>
 </section>
 
@@ -50,7 +52,6 @@
 		grid-column: 2 / span all;
 		line-height: $line-height-large;
 	}
-
 	@media (max-width: 768px) {
 		section {
 			padding: $spacing-l;
