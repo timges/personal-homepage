@@ -17,7 +17,6 @@
 	ul {
 		display: flex;
 		gap: var(--spacing-m);
-		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
 		list-style: none;
@@ -48,5 +47,12 @@
 		color: var(--color-primary);
 		font-size: var(--font-size-small);
 		margin-top: var(--spacing-xl);
+	}
+
+	@media screen and (max-width: 768px) {
+		ul {
+			flex-direction: column;
+			gap: var(--spacing-xs);
+		}
 	}
 </style>

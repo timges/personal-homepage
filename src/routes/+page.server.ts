@@ -1,4 +1,4 @@
-import { emailSchema } from '$lib/util/email-schema.js';
+import { contactFormSchema } from '$lib/util/contact-form-schema.js';
 import { superValidate } from 'sveltekit-superforms/server';
 import Email from '$lib/components/home/sections/contact/email.svelte';
 import sendgrid from '@sendgrid/mail';
@@ -9,7 +9,7 @@ import { SENDGRID_API_KEY, RECAPTCHA_SECRET_KEY } from '$env/static/private';
 
 sendgrid.setApiKey(SENDGRID_API_KEY);
 
-async function sendEmail(form: SuperValidated<typeof emailSchema>) {
+async function sendEmail(form: SuperValidated<typeof contactFormSchema>) {
 	const emailTemplate = render({
 		template: Email,
 		props: form.data
@@ -21,8 +21,7 @@ async function sendEmail(form: SuperValidated<typeof emailSchema>) {
 		},
 		to: 'gmann.tim@gmail.com',
 		subject: 'New Contact Form Submission',
-		html: emailTemplate,
-
+		html: emailTemplate
 	};
 	await sendgrid.send(options);
 }
@@ -39,14 +38,14 @@ async function validateReCaptcha(token: string) {
 }
 
 export async function load() {
-	const form = await superValidate(emailSchema);
+	const form = await superValidate(contactFormSchema);
 	return { form };
 }
 
 export const actions = {
 	default: async ({ request }: { request: Request }) => {
 		try {
-			const form = await superValidate(request, emailSchema);
+			const form = await superValidate(request, contactFormSchema);
 			if (!form.valid) {
 				return fail(400, { form });
 			}

@@ -4,10 +4,9 @@
 	import { bounceIn } from 'svelte/easing';
 	import { slide, type SlideParams } from 'svelte/transition';
 
-	const slideInSettings = {
+	const baseSlide = {
 		duration: 300,
-		easning: bounceIn,
-		delay: 2000
+		easning: bounceIn
 	} as SlideParams;
 
 	let mounted = false;
@@ -16,22 +15,33 @@
 		mounted = true;
 	});
 	function handleCookieConsent() {
-		$cookieStatus = 'accepted';
+		mounted = false;
+		setTimeout(() => {
+			$cookieStatus = 'accepted';
+		}, 500);
 	}
 	function handleCookieDeny() {
-		$cookieStatus = 'declined';
+		mounted = false;
+		setTimeout(() => {
+			$cookieStatus = 'declined';
+		}, 500);
 	}
 </script>
 
 {#if mounted}
-	<aside in:slide={slideInSettings}>
+	<aside in:slide={{ ...baseSlide, delay: 1500 }} out:slide={baseSlide}>
 		<p>🍪 Cookie settings</p>
 		<p>
 			Quick note: I've got cookies watching my back to fend off any spammy shenanigans. It's how I
-			roll to keep this place nice and tidy. Thanks for being cool about it!
+			roll to keep this place nice and tidy. I hope your cool about it!
+		</p>
+		<p>
+			You can always change your mind later. Just visit the <a href="/cookie-policy"
+				>Cookie Policy</a
+			> page for more information
 		</p>
 		<div class="action-container">
-			<button on:click={handleCookieConsent}>I want cookies!!</button>
+			<button on:click={handleCookieConsent}>Go for it!</button>
 			<button on:click={handleCookieDeny}>Not today</button>
 		</div>
 	</aside>
@@ -60,8 +70,12 @@
 		font-weight: bold;
 		margin-bottom: var(--spacing-s);
 	}
-	p {
+	p:nth-child(2) {
 		font-size: var(--font-size-b1);
+	}
+	p:nth-child(3) {
+		margin-top: var(--spacing-m);
+		font-size: var(--font-size-small);
 	}
 	button {
 		all: unset;
@@ -69,12 +83,13 @@
 		border-radius: var(--border-radius-s);
 		cursor: pointer;
 		text-align: center;
+		min-width: 100px;
 		&:first-child {
-			background-color: var(--color-success);
+			background-color: var(--color-primary);
 			color: var(--color-text-on-primary);
 			&:hover {
 				/* darken the bg with color mix */
-				background-color: color-mix(in srgb, var(--color-success) 90%, black);
+				background-color: color-mix(in srgb, var(--color-primary) 90%, black);
 			}
 		}
 		&:last-child {
@@ -89,6 +104,7 @@
 	.action-container {
 		display: flex;
 		justify-content: flex-end;
+		flex-wrap: wrap;
 		gap: var(--spacing-l);
 		margin-top: var(--spacing-l);
 	}
@@ -97,6 +113,9 @@
 			width: 80%;
 			left: 50%;
 			transform: translateX(-50%);
+		}
+		button {
+			flex-grow: 1;
 		}
 	}
 </style>

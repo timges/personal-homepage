@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const emailSchema = z.object({
+export const contactFormSchema = z.object({
 	name: z
 		.string()
 		.min(1, 'Uh-oh! This field cannot be left blank.')
@@ -18,5 +18,8 @@ export const emailSchema = z.object({
 		.string()
 		.min(1, 'Uh-oh! This field cannot be left blank.')
 		.max(500, 'You exceeded the maximum length of 500 characters!'),
-	token: z.string()
+	token: z.string(),
+	consent: z.boolean({
+		required_error: 'You must accept the privacy & cookie policy to be able to submit the form!'
+	})
 });

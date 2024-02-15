@@ -13,7 +13,7 @@
 
 <svelte:window bind:innerWidth />
 <section id="skills">
-	<h2>STUFF, I'M GOOD AT</h2>
+	<h2>I'M GOOD AT THIS</h2>
 	<div class="content-wrapper">
 		<a href="https://www.typescriptlang.org/">
 			<TsIcon />

@@ -1,19 +1,21 @@
 <script lang="ts">
-	import { emailSchema } from '$lib/util/email-schema';
+	import { contactFormSchema } from '$lib/util/contact-form-schema';
 	import { fly } from 'svelte/transition';
 	import { superForm } from 'sveltekit-superforms/client';
 	import FormField from './form-field.svelte';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { tick } from 'svelte';
 	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
+	import { cookieStatus } from '$lib/store/cookie-store';
 
 	export let data: { form: SuperValidated<any> };
 
 	let formRef: HTMLFormElement;
 
+	$: $form.consent ? ($cookieStatus = 'accepted') : null;
 	const { form, enhance, errors } = superForm(data.form, {
 		validationMethod: 'auto',
-		validators: emailSchema,
+		validators: contactFormSchema,
 		onResult: ({ result }) => {
 			console.log(result.status);
 			if (result.status === 200) {
@@ -69,10 +71,21 @@
 			maxLength={500}
 		/>
 		<input type="hidden" name="token" title="re-captcha-token" bind:value={$form.token} />
+		<div class="consent-input-container">
+			<label for="consent">
+				I agree to the use of cookies and the processing of my entered data as described in the
+				<a target="_blank" href="/cookie-policy">Cookie Policy</a>
+				and
+				<a href="/privacy-policy">Privacy Policy</a>
+				.
+			</label>
+			<input type="checkbox" name="consent" title="consent" bind:checked={$form.consent} />
+		</div>
 		<button
 			type="submit"
 			style:background-color={submissionSuccessful ? 'green' : undefined}
 			on:click|preventDefault={onSubmitButtonClick}
+			disabled={!$form.consent}
 		>
 			<div class="button-content">
 				{#if submissionSuccessful}
@@ -103,8 +116,8 @@
 		</button>
 		<div class="re-captcha-disclaimer">
 			This site is protected by reCAPTCHA and the Google
-			<a href="https://policies.google.com/privacy">Privacy Policy</a> and
-			<a href="https://policies.google.com/terms">Terms of Service</a> apply.
+			<a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and
+			<a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
 		</div>
 	</form>
 	<p>
@@ -155,8 +168,12 @@
 		align-self: flex-end;
 		border-radius: var(--border-radius-s);
 
-		&:hover {
+		&:hover:not(:disabled) {
 			background-color: var(--color-primary-hover);
+		}
+		&:disabled {
+			background-color: var(--color-light-fade);
+			cursor: not-allowed;
 		}
 	}
 
@@ -193,6 +210,42 @@
 			color: var(--color-primary);
 		}
 		min-width: 80%;
+	}
+
+	.consent-input-container {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		gap: var(--spacing-m);
+		label {
+			font-size: var(--font-size-small);
+			color: var(--color-light-fade);
+		}
+		input[type='checkbox'] {
+			all: unset;
+			&::before {
+				content: '';
+				cursor: pointer;
+				display: block;
+				width: 24px;
+				height: 24px;
+				border: 1px solid var(--color-light-fade);
+				border-radius: var(--border-radius-s);
+				background-color: var(--color-bg-light);
+				transition: background-color 0.1s ease-in-out;
+			}
+			&:checked::before {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: var(--color-text-on-primary);
+				background-image: url('/checkmark.svg');
+				background-size: 60%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-color: var(--color-primary);
+			}
+		}
 	}
 
 	@media screen and (max-width: 768px) {
