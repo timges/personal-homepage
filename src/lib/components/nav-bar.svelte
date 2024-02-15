@@ -20,25 +20,25 @@
 	@import '../../sass/main.scss';
 
 	nav {
-		background-color: $color-bg-light;
+		background-color: var(--color-bg-dark);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: $spacing-l $spacing-page-inset;
-		letter-spacing: $letter-spacing-l;
+		padding: var(--spacing-l) var(--spacing-page-inset);
+		letter-spacing: var(--letter-spacing-l);
 		width: 100%;
 		font-size: 0.8rem;
 	}
 	ul {
 		list-style: none;
 		display: flex;
-		gap: $spacing-xl;
+		gap: var(--spacing-xl);
 	}
 	a {
 		text-decoration: none;
-		color: $color-primary;
+		color: var(--color-primary);
 		transition: color 0.2s ease-in-out;
-		padding: $spacing-s 0;
+		padding: var(--spacing-s) 0;
 	}
 	li {
 		cursor: pointer;
@@ -48,16 +48,16 @@
 			content: '';
 			width: 0;
 			height: 1px;
-			margin: $spacing-xs auto;
+			margin: var(--spacing-xs) auto;
 		}
 		&:hover {
 			transform: scale(1.1);
 			a {
-				color: $color-secondary;
+				color: var(--color-secondary);
 			}
 			&:after {
 				width: 100%;
-				background-color: $color-secondary;
+				background-color: var(--color-secondary);
 				transition: width 0.2s ease-in-out;
 			}
 		}
@@ -68,12 +68,12 @@
 	}
 	p {
 		font-size: 2.5rem;
-		color: $color-primary;
+		color: var(--color-primary);
 		font-weight: normal;
 		font-family: type-writer;
 
 		&:hover {
-			color: $color-secondary;
+			color: var(--color-secondary);
 		}
 		transition: color 0.2s ease-in-out;
 	}

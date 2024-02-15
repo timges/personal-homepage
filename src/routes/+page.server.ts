@@ -4,18 +4,45 @@ import Email from '$lib/components/home/sections/contact/email.svelte';
 import sendgrid from '@sendgrid/mail';
 import { render } from 'svelte-email/render';
 import { fail } from '@sveltejs/kit';
+import type { SuperValidated } from 'sveltekit-superforms';
+import { SENDGRID_API_KEY, RECAPTCHA_SECRET_KEY } from '$env/static/private';
 
-sendgrid.setApiKey(String(process.env.SENDGRID_API_KEY));
+sendgrid.setApiKey(SENDGRID_API_KEY);
+
+async function sendEmail(form: SuperValidated<typeof emailSchema>) {
+	const emailTemplate = render({
+		template: Email,
+		props: form.data
+	});
+	const options: sendgrid.MailDataRequired = {
+		from: {
+			name: 'Personal Website Contact Form',
+			email: 'me@tim-gesemann.dev'
+		},
+		to: 'gmann.tim@gmail.com',
+		subject: 'New Contact Form Submission',
+		html: emailTemplate,
+
+	};
+	await sendgrid.send(options);
+}
+
+async function validateReCaptcha(token: string) {
+	const result = await fetch(
+		`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${token}`,
+		{
+			method: 'POST'
+		}
+	);
+	const data = await result.json();
+	return data.success && data.score > 0.5;
+}
 
 export async function load() {
 	const form = await superValidate(emailSchema);
-
-	return {
-		form
-	};
+	return { form };
 }
 
-/** @type {import('./$types').Actions} */
 export const actions = {
 	default: async ({ request }: { request: Request }) => {
 		try {
@@ -27,18 +54,7 @@ export const actions = {
 			if (!isReCaptchaValid) {
 				return fail(401, { message: 'reCaptcha failed' });
 			}
-			const emailTemplate = render({
-				template: Email,
-				props: form.data
-			});
-			const options = {
-				from: 'tim@gesemann.dev',
-				to: 'gmann.tim@gmail.com',
-				subject: 'New Contact Form Submission',
-				html: emailTemplate
-			};
-			sendgrid.send(options);
-
+			await sendEmail(form);
 			return { form };
 		} catch (error) {
 			console.error(error);
@@ -46,18 +62,3 @@ export const actions = {
 		}
 	}
 };
-async function validateReCaptcha(token: string) {
-	try {
-		const result = await fetch(
-			`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-			{
-				method: 'POST'
-			}
-		);
-		const data = await result.json();
-		console.log(data);
-		return data.success && data.score > 0.5;
-	} catch (error) {
-		throw new Error('Failed to validate reCaptcha -- ' + error);
-	}
-}

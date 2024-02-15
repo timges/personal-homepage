@@ -1,17 +1,71 @@
 <script lang="ts">
+	import { computePosition } from '@floating-ui/dom';
+	import { onMount } from 'svelte';
+
 	export let form;
 	export let errors;
 	export let name: string;
 	export let placeholder: string;
 	export let type: string;
 	export let maxLength: number;
+
+	let popoverRef: HTMLDivElement;
+	let containerRef: HTMLDivElement;
+	let popoverOffsetLeft: number = 0;
+	let popoverOffsetTop: number = 0;
+	let popoverWidth: number = 0;
+	let supressPopover: boolean = false;
+	$: $errors[name] ? showPopover() : closePopover();
+	$: supressPopover && setTimeout(() => (supressPopover = false), 5000);
+
+	function handleToggle({ newState }: ToggleEvent) {
+		if (newState === 'closed') {
+			return;
+		}
+		if (newState === 'open') {
+			updatePopoverPositionAndDimension();
+		}
+	}
+	async function updatePopoverPositionAndDimension() {
+		const { x, y } = await computePosition(containerRef, popoverRef, {
+			placement: 'bottom-start'
+		});
+		popoverOffsetLeft = x;
+		popoverOffsetTop = y;
+		popoverWidth = containerRef.clientWidth;
+	}
+
+	onMount(updatePopoverPositionAndDimension);
+
+	function handleCloseClicked() {
+		supressPopover = true;
+		closePopover();
+	}
+	function closePopover() {
+		popoverRef?.hidePopover();
+	}
+	function showPopover() {
+		if (supressPopover) return;
+		popoverRef?.showPopover();
+	}
 </script>
 
-<fieldset>
+<svelte:window
+	on:resize={updatePopoverPositionAndDimension}
+	on:scroll={updatePopoverPositionAndDimension}
+/>
+<div bind:this={containerRef} class="input-container">
 	{#if type === 'textarea'}
-		<textarea {name} bind:value={$form[name]} {placeholder} aria-invalid={!!$errors[name]} />
+		<textarea
+			title={`Your ${name}`}
+			{name}
+			bind:value={$form[name]}
+			{placeholder}
+			aria-invalid={!!$errors[name]}
+		/>
 	{:else}
 		<input
+			title={`Your ${name}`}
 			{name}
 			type="text"
 			{placeholder}
@@ -20,7 +74,20 @@
 		/>
 	{/if}
 	<small>{$form[name].length}/{maxLength}</small>
-</fieldset>
+	<div
+		bind:this={popoverRef}
+		popover="manual"
+		style:top={`calc(${popoverOffsetTop}px`}
+		style:left={`${popoverOffsetLeft}px`}
+		style:width={`${popoverWidth}px`}
+		on:beforetoggle={handleToggle}
+	>
+		<button on:click={handleCloseClicked} tabindex="-1">
+			<p>{$errors[name]?.[0]}</p>
+			<p>X</p>
+		</button>
+	</div>
+</div>
 
 <style lang="scss">
 	@import '../../../../../sass/_variables';
@@ -28,19 +95,19 @@
 	input,
 	textarea {
 		width: 100%;
-		background-color: $color-bg-dark;
-		color: $color-primary;
-		border: 1px solid $color-primary;
-		padding: $spacing-m;
-		font-size: $font-size-b1;
+		background-color: var(--color-bg-light);
+		color: var(--color-primary);
+		border: 1px solid var(--color-primary);
+		padding: var(--spacing-m);
+		font-size: var(--font-size-b1);
 		font-family: inter, sans-serif;
-		letter-spacing: $letter-spacing-m;
+		letter-spacing: var(--letter-spacing-m);
 		&:focus {
-			outline: 1px solid $color-primary;
+			outline: 1px solid var(--color-primary);
 		}
 
 		&[aria-invalid='true']:not(:focus) {
-			border: 1px solid $color-error;
+			border: 1px solid var(--color-error);
 		}
 	}
 
@@ -49,17 +116,7 @@
 		resize: none;
 	}
 
-	@media screen and (max-width: 768px) {
-		textarea {
-			height: 100px;
-		}
-		input,
-		textarea {
-			padding: $spacing-m;
-		}
-	}
-
-	fieldset {
+	.input-container {
 		position: relative;
 		display: flex;
 		align-items: center;
@@ -71,13 +128,57 @@
 			bottom: 0;
 			right: 0;
 			color: black;
-			font-size: $font-size-small;
-			padding: $spacing-s;
+			font-size: var(--font-size-small);
+			padding: var(--spacing-s);
 		}
 		:not(:focus) {
 			& ~ small {
 				visibility: hidden;
 			}
+		}
+	}
+	[popover] {
+		border: none;
+		position: absolute;
+		background-color: var(--color-error);
+		overflow: unset;
+		margin-top: var(--spacing-s);
+		border-radius: var(--border-radius-m);
+		z-index: 2;
+		padding: var(--spacing-m);
+		font-size: var(--font-size-small);
+		font-weight: 500;
+		color: white;
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		&::after {
+			display: block;
+			width: 0;
+			content: '';
+			border: 6px solid transparent;
+			border-bottom-color: var(--color-error);
+			top: -10px;
+			left: var(--spacing-m);
+			position: absolute;
+			border-radius: var(--border-radius-s);
+		}
+
+		button {
+			all: unset;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			cursor: pointer;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		textarea {
+			height: 100px;
+		}
+		input,
+		textarea {
+			padding: var(--spacing-m);
 		}
 	}
 </style>

@@ -14,7 +14,7 @@
 		<h1>Tim Gesemann</h1>
 		<p class="cta-greeting">I turn coffee into code.</p>
 		<p class="cta-introduction">
-			I'm a Software Engineer with years of experience in developing and designing enterprise
+			I'm a Software Engineer with years of experience in designing and developing enterprise
 			software solutions
 		</p>
 		<button on:click={handleCtaClick} class="cta-button"><p>GET IN TOUCH</p></button>
@@ -26,14 +26,15 @@
 	@import '../../../../sass/main.scss';
 	.cta-button {
 		position: relative;
-		background-color: $color-primary;
-		color: $color-text-on-primary;
-		padding: $spacing-m $spacing-xxl;
+		background-color: var(--color-primary);
+		color: var(--color-text-on-primary);
+		padding: var(--spacing-m) var(--spacing-xxl);
 		border: none;
-		border-radius: $border-radius-s;
-		font-size: $font-size-b1;
+		border-radius: var(--border-radius-s);
+		font-size: var(--font-size-b1);
 		font-weight: bold;
 		cursor: pointer;
+		transition: all 0.2s ease-in-out;
 
 		&:after {
 			content: '';
@@ -42,9 +43,9 @@
 			left: 0;
 			width: 0%;
 			height: 100%;
-			background-color: $color-secondary;
+			background-color: var(--color-secondary);
 			z-index: 1;
-			border-radius: $border-radius-s;
+			border-radius: var(--border-radius-s);
 			transition: all 0.2s ease-in-out;
 		}
 
@@ -53,9 +54,13 @@
 			margin: 0 !important;
 			z-index: 2;
 		}
+		&:hover {
+			transform: scale(1.01);
+		}
 
 		&:hover::after {
 			width: 100%;
+			transform: scale(1.01);
 		}
 	}
 	.cta-container {
@@ -64,7 +69,7 @@
 		grid-row: 3 / 9;
 
 		p:first-child {
-			margin: 0 0 $spacing-l 0;
+			margin: 0 0 var(--spacing-l) 0;
 		}
 		p:nth-child(2) {
 			display: inline-block;
@@ -72,27 +77,27 @@
 	}
 
 	.cta-greeting {
-		font-size: $font-size-h3;
-		color: $color-secondary;
+		font-size: var(--font-size-h3);
+		color: var(--color-secondary);
 
 		&--name-paragraph {
 			white-space: nowrap;
 		}
 		&--hi {
-			font-size: $font-size-h1;
+			font-size: var(--font-size-h1);
 		}
 	}
 
 	.cta-introduction {
 		max-width: 350px;
-		margin: $spacing-xl 0;
-		color: $color-primary;
+		margin: var(--spacing-xl) 0;
+		color: var(--color-primary);
 		font-weight: 100;
 	}
 
 	section {
 		width: 100%;
-		background-color: $color-bg-light;
+		background-color: var(--color-bg-dark);
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		grid-template-rows: repeat(8, 1fr);
@@ -109,10 +114,10 @@
 
 	h1 {
 		display: inline-block;
-		font-size: $font-size-h2;
-		color: $color-primary;
+		font-size: var(--font-size-h2);
+		color: var(--color-primary);
 		font-weight: bold;
-		padding: $spacing-s 0;
+		padding: var(--spacing-s) 0;
 	}
 	@media screen and (max-width: 1080px) {
 		img {
@@ -129,7 +134,7 @@
 
 	@media screen and (max-width: 768px) {
 		.cta-container {
-			margin-top: $spacing-l;
+			margin-top: var(--spacing-l);
 			display: flex;
 			flex-direction: column;
 		}
@@ -138,7 +143,7 @@
 			display: flex;
 			flex-direction: column-reverse;
 			align-items: center;
-			padding: $spacing-l;
+			padding: var(--spacing-l);
 		}
 
 		img {
@@ -147,18 +152,18 @@
 
 		@media screen and (max-width: 480px) {
 			section {
-				padding: $spacing-m;
+				padding: var(--spacing-m);
 			}
 
 			.cta-container {
-				margin-top: $spacing-m;
+				margin-top: var(--spacing-m);
 			}
 
 			.cta-greeting {
-				font-size: $font-size-b1;
+				font-size: var(--font-size-b1);
 
 				&--hi {
-					font-size: $font-size-h2;
+					font-size: var(--font-size-h2);
 				}
 			}
 		}

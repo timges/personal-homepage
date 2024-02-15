@@ -230,7 +230,8 @@
 		width: 100%;
 		// position: sticky;
 		top: 0;
-		padding: 0 $spacing-l;
+		padding: 0 var(--spacing-l);
+		background-color: white;
 	}
 
 	div {
@@ -238,7 +239,7 @@
 		justify-content: center;
 	}
 	.timeline-path {
-		stroke: $color-primary;
+		stroke: var(--color-primary);
 	}
 	svg {
 		stroke-dashoffset: 3000;
@@ -253,7 +254,7 @@
 	.ball-2021 {
 		visibility: hidden;
 		path {
-			fill: $color-primary;
+			fill: var(--color-primary);
 		}
 	}
 
@@ -264,7 +265,7 @@
 		opacity: 0;
 	}
 	.text {
-		fill: $color-primary;
+		fill: var(--color-primary);
 	}
 
 	@media screen and (max-width: 768px) {

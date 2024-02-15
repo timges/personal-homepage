@@ -23,18 +23,18 @@
 
 	section {
 		max-width: 100%;
-		background-color: $color-bg-light;
+		background-color: var(--color-bg-dark);
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
-		gap: $spacing-l;
-		padding: $spacing-xxl 0;
+		gap: var(--spacing-l);
+		padding: var(--spacing-xxl) 0;
 	}
 
 	h2 {
 		grid-column: 2 / span all;
 		white-space: nowrap;
-		color: $color-text-on-bg-light;
-		line-height: $line-height-large;
+		color: var(--color-text-on-bg-light);
+		line-height: var(--line-height-large);
 	}
 
 	@for $i from 1 through 3 {
@@ -49,7 +49,7 @@
 		}
 	}
 
-	@media screen and (max-width: 1100px) {
+	@media screen and (max-width: 1260px) {
 		.work-item:nth-of-type(even) {
 			grid-column: 5 / span 3;
 		}
@@ -64,12 +64,12 @@
 		}
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 800px) {
 		section {
 			display: flex;
 			flex-direction: column;
-			gap: $spacing-l;
-			padding: $spacing-xxl $spacing-l;
+			gap: var(--spacing-l);
+			padding: var(--spacing-xxl) var(--spacing-l);
 		}
 
 		h2 {

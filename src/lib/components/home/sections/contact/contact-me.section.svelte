@@ -5,6 +5,7 @@
 	import FormField from './form-field.svelte';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { tick } from 'svelte';
+	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
 
 	export let data: { form: SuperValidated<any> };
 
@@ -34,13 +35,13 @@
 		// @ts-ignore
 		grecaptcha.ready(function () {
 			// @ts-ignore
-			grecaptcha
-				.execute('6LdrcHApAAAAAL_j-HWDi5isOi1zUb-X85HbTnoB', { action: 'submit' })
-				.then(async function (token: string) {
-					$form.token = token;
-					await tick();
-					formRef.requestSubmit();
-				});
+			grecaptcha.execute(PUBLIC_RECAPTCHA_SITE_KEY, { action: 'submit' }).then(async function (
+				token: string
+			) {
+				$form.token = token;
+				await tick();
+				formRef.requestSubmit();
+			});
 		});
 	}
 </script>
@@ -67,7 +68,7 @@
 			type="textarea"
 			maxLength={500}
 		/>
-		<input type="hidden" name="token" bind:value={$form.token} />
+		<input type="hidden" name="token" title="re-captcha-token" bind:value={$form.token} />
 		<button
 			type="submit"
 			style:background-color={submissionSuccessful ? 'green' : undefined}
@@ -119,77 +120,77 @@
 		grid-row: 2 / span all;
 		display: flex;
 		flex-direction: column;
-		gap: $spacing-l;
-		background-color: $color-bg-dark;
-		padding: $spacing-xl;
+		gap: var(--spacing-l);
+		background-color: var(--color-bg-light);
+		padding: var(--spacing-xl);
 		z-index: 100;
-		border-radius: $border-radius-s;
+		border-radius: var(--border-radius-s);
 	}
 	section {
 		max-width: 100%;
-		background-color: $color-bg-light;
+		background-color: var(--color-bg-dark);
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
-		grid-template-rows: $font-size-h2 repeat(7, 1fr);
-		gap: $spacing-l;
+		grid-template-rows: var(--font-size-h2) repeat(7, 1fr);
+		gap: var(--spacing-l);
 		position: relative;
-		padding: $spacing-xxl 0;
+		padding: var(--spacing-xxl) 0;
 	}
 
 	h2 {
 		grid-column: 2 / span all;
-		line-height: $line-height-large;
+		line-height: var(--line-height-large);
 	}
 
 	button {
 		position: relative;
-		background-color: $color-primary;
-		color: $color-text-on-primary;
-		padding: $spacing-m;
+		background-color: var(--color-primary);
+		color: var(--color-text-on-primary);
+		padding: var(--spacing-m);
 		border: none;
-		font-size: $font-size-b1;
+		font-size: var(--font-size-b1);
 		cursor: pointer;
 		min-width: 140px;
 		max-width: 180px;
 		align-self: flex-end;
-		border-radius: $border-radius-s;
+		border-radius: var(--border-radius-s);
 
 		&:hover {
-			background-color: $color-primary-hover;
+			background-color: var(--color-primary-hover);
 		}
 	}
 
 	.button-content {
-		height: $icon-size-s;
+		height: var(--icon-size-s);
 		widows: 100%;
 		display: flex;
-		gap: $spacing-s;
+		gap: var(--spacing-s);
 		justify-content: center;
 		align-items: center;
 
 		div {
 			display: flex;
 			align-items: center;
-			gap: $spacing-m;
+			gap: var(--spacing-m);
 		}
 	}
 	svg {
-		width: $icon-size-s;
-		height: $icon-size-s;
-		fill: $color-text-on-primary;
+		width: var(--icon-size-s);
+		height: var(--icon-size-s);
+		fill: var(--color-text-on-primary);
 	}
 
 	p {
 		grid-column: 2 / 4;
 		grid-row: 4 / span all;
-		font-size: $font-size-b1;
-		line-height: $line-height-large;
+		font-size: var(--font-size-b1);
+		line-height: var(--line-height-large);
 	}
 	.re-captcha-disclaimer {
-		font-size: $font-size-small;
-		color: $color-light-fade;
+		font-size: var(--font-size-small);
+		color: var(--color-light-fade);
 		a {
-			color: $color-primary;
+			color: var(--color-primary);
 		}
 		min-width: 80%;
 	}
@@ -201,23 +202,23 @@
 			gap: 0;
 		}
 		h2 {
-			margin-left: $spacing-l;
+			margin-left: var(--spacing-l);
 		}
 		.contact-form {
 			background-color: transparent;
 			order: 3;
-			padding: $spacing-l;
+			padding: var(--spacing-l);
 		}
 		textarea {
 			height: 100px;
 		}
 		input,
 		textarea {
-			padding: $spacing-m;
+			padding: var(--spacing-m);
 		}
 		p {
 			order: 2;
-			padding: $spacing-l;
+			padding: var(--spacing-l);
 		}
 	}
 </style>
