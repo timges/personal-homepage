@@ -46,6 +46,7 @@
 	"type": "module",
 	"dependencies": {
 		"@dimforge/rapier3d-compat": "^0.11.2",
+		"@floating-ui/dom": "^1.6.3",
 		"@sendgrid/mail": "^8.1.0",
 		"@theatre/core": "^0.7.0",
 		"@theatre/studio": "^0.7.0",
