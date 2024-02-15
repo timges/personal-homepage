@@ -1,50 +1,65 @@
-$color-primary: #2f355c;
-$color-primary-hover: #363651;
-$color-secondary: #e7472b;
-$color-bg-light: #f7f5f1;
-$color-bg-dark: #ffffff;
-$color-text-on-primary: #ffffff;
-$color-text-on-bg-light: #000000;
-$color-text-on-bg-dark: #ffffff;
-$color-disabled: #485273;
-$color-light-fade: #a6a6a6;
-$color-chili-pepper: #f6bd8f;
-$color-error: #ff0000;
-$color-success: #00ff00;
+:root {
+	--color-primary: #2f355c;
+	--color-primary-hover: #363651;
+	--color-secondary: #e7472b;
+	--color-bg-dark: #f7f5f1;
+	--color-bg-light: #ffffff;
+	--color-text-on-primary: #ffffff;
+	--color-text-on-secondary: #ffffff;
+	--color-text-on-bg-light: #000000;
+	--color-text-on-bg-dark: #000000;
+	--color-disabled: #485273;
+	--color-light-fade: #666666;
+	--color-chili-pepper: #f6bd8f;
+	--color-error: #c73d1d;
+	--color-success: #22bb33;
 
-$spacing-xs: 4px;
-$spacing-s: 8px;
-$spacing-m: 16px;
-$spacing-l: 24px;
-$spacing-xl: 32px;
-$spacing-xxl: 48px;
-$spacing-page-inset: 8rem;
+	--spacing-xs: 4px;
+	--spacing-s: 8px;
+	--spacing-m: 16px;
+	--spacing-l: 24px;
+	--spacing-xl: 32px;
+	--spacing-xxl: 48px;
+	--spacing-page-inset: 8rem;
 
-$letter-spacing-s: 0.05rem;
-$letter-spacing-m: 0.1rem;
-$letter-spacing-l: 0.15rem;
+	--letter-spacing-s: 0.05rem;
+	--letter-spacing-m: 0.1rem;
+	--letter-spacing-l: 0.15rem;
 
-$line-height-small: 1em;
-$line-height-normal: 1.2em;
-$line-height-large: 1.5em;
+	--line-height-small: 1em;
+	--line-height-normal: 1.2em;
+	--line-height-large: 1.5em;
 
-$font-size-h1: 3rem;
-$font-size-h2: 2rem;
-$font-size-h3: 1.5rem;
-$font-size-b1: 1rem;
-$font-size-b2: 1.25rem;
-$font-size-small: 0.75rem;
+	--font-size-h1: 3rem;
+	--font-size-h2: 2rem;
+	--font-size-h3: 1.5rem;
+	--font-size-b1: 1rem;
+	--font-size-b2: 1.25rem;
+	--font-size-small: 0.75rem;
 
-$font-size-body-l: 1.5rem;
-$font-size-body-m: 1.15rem;
-$font-size-body-s: 1rem;
+	--font-size-body-l: 1.5rem;
+	--font-size-body-m: 1.15rem;
+	--font-size-body-s: 1rem;
 
-$icon-size-s: 16px;
-$icon-size-m: 24px;
-$icon-size-l: 32px;
-$icon-size-xl: 60px;
+	--icon-size-s: 16px;
+	--icon-size-m: 24px;
+	--icon-size-l: 32px;
+	--icon-size-xl: 60px;
 
-$border-radius-s: 2px;
-$border-radius-m: 4px;
-$border-radius-l: 8px;
-$border-radius-circle: 50%;
+	--border-radius-s: 2px;
+	--border-radius-m: 4px;
+	--border-radius-l: 8px;
+	--border-radius-circle: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+	:root {
+		--spacing-page-inset: 6rem;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	:root {
+		--spacing-page-inset: 4rem;
+	}
+}

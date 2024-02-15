@@ -13,8 +13,8 @@
 <style lang="scss">
 	@import '../../../../../../sass/main.scss';
 	svg {
-		width: $icon-size-xl;
-		height: $icon-size-xl;
-		min-width: $icon-size-l;
+		width: var(--icon-size-xl);
+		height: var(--icon-size-xl);
+		min-width: var(--icon-size-l);
 	}
 </style>

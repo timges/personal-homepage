@@ -15,14 +15,16 @@
 <section id="skills">
 	<h2>STUFF, I'M GOOD AT</h2>
 	<div class="content-wrapper">
-		<TsIcon />
-		<AwsIcon />
-		<ReactIcon />
-		<HtmlIcon />
-		<CssIcon />
-		<NodeJsIcon />
-		<JavaIcon />
-		<MySqlIcon />
+		<a href="https://www.typescriptlang.org/">
+			<TsIcon />
+		</a>
+		<a href="https://aws.amazon.com/de/"><AwsIcon /></a>
+		<a href="https://react.dev/"><ReactIcon /></a>
+		<a href="https://wiki.selfhtml.org/wiki/HTML"><HtmlIcon /></a>
+		<a href="https://wiki.selfhtml.org/wiki/CSS"><CssIcon /></a>
+		<a href="https://nodejs.org/en"><NodeJsIcon /></a>
+		<a href="https://www.java.com/de/"><JavaIcon /></a>
+		<a href="https://www.mysql.com/de/"><MySqlIcon /></a>
 	</div>
 </section>
 
@@ -31,13 +33,13 @@
 
 	section {
 		width: 100%;
-		background-color: $color-bg-dark;
+		background-color: var(--color-bg-light);
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		// grid-template-rows: repeat(8, 1fr);
-		gap: $spacing-l;
-		color: $color-text-on-bg-light;
-		padding: $spacing-xxl 0;
+		gap: var(--spacing-l);
+		color: var(--color-text-on-bg-light);
+		padding: var(--spacing-xxl) 0;
 	}
 	.content-wrapper {
 		grid-column: 2 / span 6;
@@ -45,23 +47,29 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: $spacing-xxl;
+		gap: var(--spacing-xxl);
 	}
 	h2 {
 		word-wrap: nowrap;
 		grid-column: 2 / span all;
-		line-height: $line-height-large;
+		line-height: var(--line-height-large);
+	}
+	a:hover {
+		transform: scale(1.1);
+	}
+	a {
+		transition: transform 0.2s ease-in-out;
 	}
 	@media (max-width: 768px) {
 		section {
-			padding: $spacing-l;
+			padding: var(--spacing-l);
 			display: flex;
 			flex-direction: column;
 		}
 		.content-wrapper {
 			flex-direction: row;
 			flex-wrap: wrap;
-			gap: $spacing-l;
+			gap: var(--spacing-l);
 		}
 	}
 </style>
