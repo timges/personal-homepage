@@ -4,7 +4,7 @@
 </script>
 
 <section id="work">
-	<h2>THINGS, I BUILT</h2>
+	<h2>THINGS, I WORKED ON</h2>
 	{#each items as item (item.id)}
 		<div class="work-item">
 			<WorkItem

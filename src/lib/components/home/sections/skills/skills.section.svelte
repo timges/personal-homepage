@@ -15,16 +15,16 @@
 <section id="skills">
 	<h2>I'M GOOD AT THIS</h2>
 	<div class="content-wrapper">
-		<a href="https://www.typescriptlang.org/">
+		<a target="_blank" href="https://www.typescriptlang.org/">
 			<TsIcon />
 		</a>
-		<a href="https://aws.amazon.com/de/"><AwsIcon /></a>
-		<a href="https://react.dev/"><ReactIcon /></a>
-		<a href="https://wiki.selfhtml.org/wiki/HTML"><HtmlIcon /></a>
-		<a href="https://wiki.selfhtml.org/wiki/CSS"><CssIcon /></a>
-		<a href="https://nodejs.org/en"><NodeJsIcon /></a>
-		<a href="https://www.java.com/de/"><JavaIcon /></a>
-		<a href="https://www.mysql.com/de/"><MySqlIcon /></a>
+		<a target="_blank" href="https://aws.amazon.com/de/"><AwsIcon /></a>
+		<a target="_blank" href="https://react.dev/"><ReactIcon /></a>
+		<a target="_blank" href="https://wiki.selfhtml.org/wiki/HTML"><HtmlIcon /></a>
+		<a target="_blank" href="https://wiki.selfhtml.org/wiki/CSS"><CssIcon /></a>
+		<a target="_blank" href="https://nodejs.org/en"><NodeJsIcon /></a>
+		<a target="_blank" href="https://www.java.com/de/"><JavaIcon /></a>
+		<a target="_blank" href="https://www.mysql.com/de/"><MySqlIcon /></a>
 	</div>
 </section>
 
@@ -36,7 +36,6 @@
 		background-color: var(--color-bg-light);
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
-		// grid-template-rows: repeat(8, 1fr);
 		gap: var(--spacing-l);
 		color: var(--color-text-on-bg-light);
 		padding: var(--spacing-xxl) 0;
@@ -45,6 +44,7 @@
 		grid-column: 2 / span 6;
 		grid-row: 2;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
 		gap: var(--spacing-xxl);

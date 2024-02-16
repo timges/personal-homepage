@@ -5,19 +5,23 @@
 	import Experience from '$lib/components/home/sections/experience/experience.section.svelte';
 	import ContactMe from '$lib/components/home/sections/contact/contact-me.section.svelte';
 	import Footer from '$lib/components/home/sections/footer.svelte';
-	import { cookieStatus } from '$lib/store/cookie-store';
+	import ExternalScriptLoader from '$lib/components/external-script-loader.svelte';
+	import SeoHead from '$lib/components/seo-head.svelte';
 
 	export let data;
 </script>
 
-<svelte:head>
-	{#if $cookieStatus === 'accepted'}
-		<script
-			async
-			src="https://www.google.com/recaptcha/api.js?render=6LdrcHApAAAAAL_j-HWDi5isOi1zUb-X85HbTnoB"
-		></script>
-	{/if}
-</svelte:head>
+<SeoHead
+	mainEntityOfPage
+	title="Tim Gesemann"
+	description="
+	Author: Tim Gesemann,
+	Site: htts://tim-gesemann.dev/,
+	Context: Landing Page,
+	This is the landing page of Tim Gesemann's personal website. It contains information about the author, his skills, his work, and his contact information.
+"
+/>
+<ExternalScriptLoader />
 <main>
 	<HeroSection />
 	<SkillsSection />

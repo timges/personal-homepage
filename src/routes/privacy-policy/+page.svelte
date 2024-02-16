@@ -1,3 +1,16 @@
+<script>
+	import SeoHead from '$lib/components/seo-head.svelte';
+</script>
+
+<SeoHead
+	title="Privacy Policy"
+	description="
+  Author: Tim Gesemann,
+  Site: htts://tim-gesemann.dev/privacy-policy,
+  Context: Privacy Policy,
+	This is the privacy policy of Tim Gesemann's personal website. It contains information about the collection, use, and disclosure of personal data when using the website. It also explains the privacy rights and how the law protects the user.
+"
+/>
 <section>
 	<h1>Privacy Policy</h1>
 	<p>Last updated: February 14, 2024</p>
@@ -431,6 +444,7 @@
 		height: 100%;
 		background-color: var(--color-bg-dark);
 		overflow-x: hidden;
+		scroll-behavior: smooth;
 	}
 
 	section {
@@ -449,8 +463,6 @@
 		h3 {
 			margin-top: var(--spacing-l);
 			margin-bottom: var(--spacing-m);
-		}
-		a {
 		}
 	}
 </style>

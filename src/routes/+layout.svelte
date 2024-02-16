@@ -20,7 +20,7 @@
 
 <style lang="scss" global>
 	@import '../sass/main.scss';
-	:root {
+	:global(:root) {
 		letter-spacing: var(--letter-spacing-l);
 		scroll-behavior: smooth;
 	}

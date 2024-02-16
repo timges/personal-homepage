@@ -22,7 +22,9 @@ export default [
 		title: 'TimeTracker',
 		description:
 			'A mobile app that conveniently tracks working hours and calculates billable project time for customers.',
-		tags: ['React-Native', 'Typescript', 'SqLite']
+		tags: ['React-Native', 'Typescript', 'Async Storage'],
+		icon: 'link',
+		link: '/timetracker.jpeg'
 	},
 	{
 		id: '3',

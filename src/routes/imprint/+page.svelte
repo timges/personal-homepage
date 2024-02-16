@@ -1,3 +1,16 @@
+<script>
+	import SeoHead from '$lib/components/seo-head.svelte';
+</script>
+
+<SeoHead
+	title="Imprint"
+	description="
+Author: Tim Gesemann,
+Site: htts://tim-gesemann.dev/imprint,
+Context: Imprint,
+This is the imprint of Tim Gesemann's personal website. It contains information about the author and the website.
+"
+/>
 <section>
 	<h1>Imprint</h1>
 	<p>Information in accordance with Section 5 TMG</p>
@@ -23,6 +36,7 @@
 		height: 100%;
 		background-color: var(--color-bg-dark);
 		overflow-x: hidden;
+		scroll-behavior: smooth;
 	}
 	section {
 		padding: var(--spacing-page-inset) var(--spacing-page-inset);
