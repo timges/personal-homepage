@@ -2,9 +2,9 @@
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onMount } from 'svelte';
-	gsap.registerPlugin(ScrollTrigger);
 
 	onMount(() => {
+		gsap.registerPlugin(ScrollTrigger);
 		const ballPulses = gsap
 			.timeline({
 				defaults: {
