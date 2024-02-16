@@ -79,7 +79,13 @@
 				<a href="/privacy-policy">Privacy Policy</a>
 				.
 			</label>
-			<input type="checkbox" name="consent" title="consent" bind:checked={$form.consent} />
+			<input
+				id="consent"
+				type="checkbox"
+				name="consent"
+				title="consent"
+				bind:checked={$form.consent}
+			/>
 		</div>
 		<button
 			type="submit"

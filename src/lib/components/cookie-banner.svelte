@@ -33,12 +33,12 @@
 		<p>🍪 Cookie settings</p>
 		<p>
 			Quick note: I've got cookies watching my back to fend off any spammy shenanigans. It's how I
-			roll to keep this place nice and tidy. I hope your cool about it!
+			roll to keep this place nice and tidy. I hope your cool about it! 😬
 		</p>
 		<p>
-			You can always change your mind later. Just visit the <a href="/cookie-policy"
+			Feel free to change your mind anytime! For more info, visit the <a href="/cookie-policy"
 				>Cookie Policy</a
-			> page for more information
+			> page.
 		</p>
 		<div class="action-container">
 			<button on:click={handleCookieConsent}>Go for it!</button>
@@ -51,7 +51,7 @@
 	aside {
 		position: fixed;
 		bottom: var(--spacing-l);
-		left: var(--spacing-xxl);
+		left: var(--spacing-cookie-banner);
 		background-color: var(--color-bg-light);
 		padding: var(--spacing-l);
 		border-radius: var(--border-radius-m);
@@ -105,7 +105,7 @@
 		display: flex;
 		justify-content: flex-end;
 		flex-wrap: wrap;
-		gap: var(--spacing-l);
+		gap: var(--spacing-m);
 		margin-top: var(--spacing-l);
 	}
 	@media screen and (max-width: 768px) {
