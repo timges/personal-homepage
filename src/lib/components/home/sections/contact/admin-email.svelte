@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Head, Heading, Hr, Html, Preview, Section, Text } from 'svelte-email';
+	import { Heading, Hr, Html, Section, Text } from 'svelte-email';
 
 	export let name: string;
 	export let email: string;
@@ -8,7 +8,7 @@
 
 	const main = {
 		padding: '20px',
-		backgroundColor: '#f4f4f4'
+		backgroundColor: '#F7F5F0'
 	};
 
 	const heading = {
@@ -24,8 +24,6 @@
 </script>
 
 <Html>
-	<Head />
-	<Preview preview={`Hey, ${name} contacted you via your website`} />
 	<Section style={main}>
 		<Heading style={heading}>New message from {name}</Heading>
 		<Hr />

@@ -1,6 +1,7 @@
 import { contactFormSchema } from '$lib/util/contact-form-schema.js';
 import { superValidate } from 'sveltekit-superforms/server';
-import Email from '$lib/components/home/sections/contact/email.svelte';
+import AdminEmail from '$lib/components/home/sections/contact/admin-email.svelte';
+import UserEmail from '$lib/components/home/sections/contact/user-email.svelte';
 import sendgrid from '@sendgrid/mail';
 import { render } from 'svelte-email/render';
 import { fail } from '@sveltejs/kit';
@@ -9,9 +10,9 @@ import { SENDGRID_API_KEY, RECAPTCHA_SECRET_KEY } from '$env/static/private';
 
 sendgrid.setApiKey(SENDGRID_API_KEY);
 
-async function sendEmail(form: SuperValidated<typeof contactFormSchema>) {
+async function sendAdminEmail(form: SuperValidated<typeof contactFormSchema>) {
 	const emailTemplate = render({
-		template: Email,
+		template: AdminEmail,
 		props: form.data
 	});
 	const options: sendgrid.MailDataRequired = {
@@ -21,6 +22,25 @@ async function sendEmail(form: SuperValidated<typeof contactFormSchema>) {
 		},
 		to: 'gmann.tim@gmail.com',
 		subject: 'New Contact Form Submission',
+		html: emailTemplate
+	};
+	await sendgrid.send(options);
+}
+
+async function sendUserEmail(form: SuperValidated<typeof contactFormSchema>) {
+	const emailTemplate = render({
+		template: UserEmail,
+		props: {
+			name: form.data.name
+		}
+	});
+	const options: sendgrid.MailDataRequired = {
+		from: {
+			name: 'Tim Gesemann',
+			email: 'me@tim-gesemann.dev'
+		},
+		to: form.data.email,
+		subject: 'Thank you for reaching out!',
 		html: emailTemplate
 	};
 	await sendgrid.send(options);
@@ -53,7 +73,9 @@ export const actions = {
 			if (!isReCaptchaValid) {
 				return fail(401, { message: 'reCaptcha failed' });
 			}
-			await sendEmail(form);
+			await sendAdminEmail(form);
+			//No await, cause we don't want to block the user if the user email fails
+			sendUserEmail(form);
 			return { form };
 		} catch (error) {
 			console.error(error);
