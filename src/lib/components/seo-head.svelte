@@ -15,19 +15,17 @@
 		{#each items as item (item.id)}
 			{@html `
       <script type="application/ld+json">
-					{
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": ${item.title},
-        "description": ${item.description},
-        "featureList": ${item.tags.join(', ')},
-        "url": ${item.link},
-        "applicationCategory": "https://schema.org/WebApplication",
-      }
-			</script>
-    `}
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "${item.title}",
+          "description": "${item.description}",
+          "featureList": "${item.tags.join(', ')}",
+          "url": "${item.link}",
+          "applicationCategory": "https://schema.org/WebApplication",
+        }
+        </script>`}
 		{/each}
-		{@html `
 		<script type="application/ld+json">
     {
       "@context" : "https://schema.org",
@@ -50,6 +48,5 @@
         ]
       }
 		</script>
-    `}
 	{/if}
 </svelte:head>
