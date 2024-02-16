@@ -29,7 +29,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../../../../sass/main.scss';
+	@import '../../../../../sass/main';
 
 	section {
 		width: 100%;

@@ -219,7 +219,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../../../../sass/main.scss';
+	@import '../../../../../sass/main';
 
 	section {
 		z-index: 98;
@@ -231,7 +231,7 @@
 		// position: sticky;
 		top: 0;
 		padding: 0 var(--spacing-l);
-		background-color: white;
+		background-color: #FFF;
 	}
 
 	div {

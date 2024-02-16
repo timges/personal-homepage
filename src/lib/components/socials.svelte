@@ -52,7 +52,7 @@
 </aside>
 
 <style lang="scss">
-	@import '../../sass/main.scss';
+	@import '../../sass/main';
 	.socials {
 		display: flex;
 		flex-direction: column;

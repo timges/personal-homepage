@@ -23,7 +23,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../../../sass/main.scss';
+	@import '../../../../sass/main';
 	.cta-button {
 		position: relative;
 		background-color: var(--color-primary);

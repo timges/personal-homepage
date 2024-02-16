@@ -89,7 +89,7 @@
 			color: var(--color-text-on-primary);
 			&:hover {
 				/* darken the bg with color mix */
-				background-color: color-mix(in srgb, var(--color-primary) 90%, black);
+				background-color: color-mix(in srgb, var(--color-primary) 90%, #000);
 			}
 		}
 		&:last-child {
