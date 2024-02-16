@@ -24,7 +24,7 @@
           "description": "${item.description}",
           "featureList": "${item.tags.join(', ')}",
           "url": "${item.link}",
-          "applicationCategory": "https://schema.org/WebApplication",
+          "applicationCategory": "https://schema.org/WebApplication"
         }
         </script>`}
 		{/each}
@@ -46,7 +46,7 @@
             "position": 1,
             "name": "Home",
             "item": "https://tim-gesemann.dev/"
-          },
+          }
         ]
       }
 		</script>
