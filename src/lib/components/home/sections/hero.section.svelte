@@ -19,7 +19,7 @@
 		</p>
 		<button on:click={handleCtaClick} class="cta-button"><p>GET IN TOUCH</p></button>
 	</div>
-	<img src={'/tim-2.png'} alt="Tim Gesemann profile" />
+	<img src={'/me.png'} alt="Tim Gesemann profile" />
 </section>
 
 <style lang="scss">
