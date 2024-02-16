@@ -39,7 +39,7 @@
 		<Hr style={hr} />
 		<Container style={container}>
 			<Link style={link} href="">
-				<img src="http://localhost:5173/email-assets/github.png" alt="github-icon" />
+				<img src="https://tim-gesemann.dev/email-assets/github.png" alt="github-icon" />
 			</Link>
 			<Link style={link} href="https://www.linkedin.com/in/tim-gesemann/">
 				<img src="https://tim-gesemann.dev/email-assets/linked-in.png" alt="linked-in-icon" />
