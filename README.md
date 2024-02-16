@@ -1,38 +1,35 @@
-# create-svelte
+# Hey there 👋🏼
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is the source-code repo of my personal website. If you haven't seen it in action, make sure to check it out at:
 
-## Creating a project
+<div align="center">
+  <a href="https://tim-gesemann.dev" style="font-size: 24px;">tim-gesemann.dev</a>
+</div>
 
-If you're seeing this, you've probably already done this step. Congrats!
+![landing-page-screenshot](readme-assets/landing-page.png)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## 🤓 Curious about it?
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+1. [How was it built?](#how-was-it-built)
+   1. [general-tech-stack](#general-tech-stack)
+   2. [infrastructure](#infrastructure)
+   3. [form-security](#form-security)
+   4. [cookies...?](#cookies)
+2. [Forking](#forking)
+   1. [can i?](#can-i?)
+   2. [setup](#setup)
+   3. [customization](#customization)
+3. [Final words](#final-words)
 
-## Developing
+# 🤔 How was it built?
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## general-teck-stack
 
-```bash
-npm run dev
+### FrontEnd
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+The basis is of course HTML & JS. Based on that I used the following frameworks / libraries
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- [SvelteKit](https://kit.svelte.dev/)
+- [GSAP](https://gsap.com/)
+- [SCSS](https://sass-lang.com/)
+- 
