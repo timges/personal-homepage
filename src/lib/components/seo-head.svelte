@@ -21,6 +21,7 @@
           "name": "${item.title}",
           "description": "${item.description}",
           "featureList": "${item.tags.join(', ')}",
+          "operatingSystem": "All, Windows, Linux, Mac OS, Android, iOS",
           "url": "${item.link}",
           "applicationCategory": "https://schema.org/WebApplication"
         }
