@@ -1,10 +1,16 @@
 <section>
 	<ul>
-		<a href="/imprint"><li>Imprint</li></a>
-		|
-		<a href="/privacy-policy"><li>Privacy Policy</li></a>
-		|
-		<a href="/cookie-policy"><li>Cookie Policy</li></a>
+		<li>
+			<a href="/imprint"><li>Imprint</li></a>
+		</li>
+		<li>|</li>
+		<li>
+			<a href="/privacy-policy"><li>Privacy Policy</li></a>
+		</li>
+		<li>|</li>
+		<li>
+			<a href="/cookie-policy"><li>Cookie Policy</li></a>
+		</li>
 	</ul>
 	<p>© 2024 Tim Gesemann. All rights reserved.</p>
 </section>
