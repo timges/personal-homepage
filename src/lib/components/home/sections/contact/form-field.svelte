@@ -90,7 +90,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../../../../sass/_variables';
+	@import '../../../../../sass/variables';
 
 	input,
 	textarea {

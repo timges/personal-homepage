@@ -19,7 +19,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../../../../sass/main.scss';
+	@import '../../../../../sass/main';
 
 	section {
 		max-width: 100%;
@@ -32,7 +32,6 @@
 
 	h2 {
 		grid-column: 2 / span all;
-		white-space: nowrap;
 		color: var(--color-text-on-bg-light);
 		line-height: var(--line-height-large);
 	}

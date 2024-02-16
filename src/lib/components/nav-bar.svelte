@@ -17,7 +17,7 @@
 </nav>
 
 <style lang="scss">
-	@import '../../sass/main.scss';
+	@import '../../sass/main';
 
 	nav {
 		background-color: var(--color-bg-dark);

@@ -2,11 +2,12 @@
 	import CookieBanner from '$lib/components/cookie-banner.svelte';
 	import Socials from '$lib/components/socials.svelte';
 	import { cookieStatus } from '$lib/store/cookie-store';
-	import { onMount } from 'svelte';
 	import NavBar from '../lib/components/nav-bar.svelte';
 	import LoadingOverlay from '$lib/components/loading-overlay.svelte';
+	import { onMount } from 'svelte';
 	let showBackToTop: boolean;
 	let isLoading = true;
+
 	onMount(() => {
 		isLoading = false;
 	});
@@ -28,7 +29,7 @@
 {/if}
 
 <style lang="scss" global>
-	@import '../sass/main.scss';
+	@import '../sass/main';
 	:global(:root) {
 		letter-spacing: var(--letter-spacing-l);
 		scroll-behavior: smooth;

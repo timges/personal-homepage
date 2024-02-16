@@ -145,7 +145,7 @@
 		background-color: var(--color-success);
 		color: var(--color-text-on-primary);
 		&:hover {
-			background-color: color-mix(in srgb, var(--color-success) 90%, black);
+			background-color: color-mix(in srgb, var(--color-success) 90%, #000);
 		}
 		&:active {
 			transform: scale(0.99);
@@ -155,7 +155,7 @@
 		background-color: var(--color-error);
 		color: var(--color-text-on-primary);
 		&:hover {
-			background-color: color-mix(in srgb, var(--color-error) 90%, black);
+			background-color: color-mix(in srgb, var(--color-error) 90%, #000);
 		}
 		&:active {
 			transform: scale(0.99);

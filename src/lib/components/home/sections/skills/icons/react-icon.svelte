@@ -9,7 +9,7 @@
 </svg>
 
 <style lang="scss">
-	@import '../../../../../../sass/main.scss';
+	@import '../../../../../../sass/main';
 	svg {
 		width: var(--icon-size-xl);
 		height: var(--icon-size-xl);

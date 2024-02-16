@@ -46,7 +46,7 @@
 </button>
 
 <style lang="scss">
-	@import '../../../../../sass/main.scss';
+	@import '../../../../../sass/main';
 
 	ul {
 		display: flex;
@@ -117,6 +117,5 @@
 		font-size: var(--font-size-h3);
 		margin-bottom: var(--spacing-m);
 		font-weight: normal;
-		white-space: nowrap;
 	}
 </style>

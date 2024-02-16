@@ -133,7 +133,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../../../../sass/main.scss';
+	@import '../../../../../sass/main';
 	.contact-form {
 		grid-column: 4 / 8;
 		grid-row: 2 / span all;
@@ -267,13 +267,6 @@
 			background-color: transparent;
 			order: 3;
 			padding: var(--spacing-l);
-		}
-		textarea {
-			height: 100px;
-		}
-		input,
-		textarea {
-			padding: var(--spacing-m);
 		}
 		p {
 			order: 2;

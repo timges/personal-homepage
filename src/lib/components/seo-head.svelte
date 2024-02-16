@@ -13,18 +13,21 @@
 	<link rel="canonical" href="https://tim-gesemann.dev/" />
 	{#if mainEntityOfPage}
 		{#each items as item (item.id)}
-			<script type="application/ld+json">
-      {{
+			{@html `
+      <script type="application/ld+json">
+					{
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": {item.title},
-        "description": {item.description},
-        "featureList": {item.tags.JointData(', ')},
-        "url": {item.link},
+        "name": ${item.title},
+        "description": ${item.description},
+        "featureList": ${item.tags.join(', ')},
+        "url": ${item.link},
         "applicationCategory": "https://schema.org/WebApplication",
-      }}
+      }
 			</script>
+    `}
 		{/each}
+		{@html `
 		<script type="application/ld+json">
     {
       "@context" : "https://schema.org",
@@ -34,7 +37,7 @@
     }
 		</script>
 		<script type="application/ld+json">
-      {{
+			{
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -45,7 +48,8 @@
             "item": "https://tim-gesemann.dev/"
           },
         ]
-      }}
+      }
 		</script>
+    `}
 	{/if}
 </svelte:head>
