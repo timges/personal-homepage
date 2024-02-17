@@ -4,7 +4,7 @@ This is the source-code repo of my personal website. If you haven't seen it in a
 
 <div align="center">
 
-  ### [tim-gesemann.dev](https://tim-gesemann.dev)
+### [tim-gesemann.dev](https://tim-gesemann.dev)
 
 </div>
 

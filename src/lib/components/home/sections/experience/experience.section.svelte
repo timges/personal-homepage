@@ -231,7 +231,7 @@
 		// position: sticky;
 		top: 0;
 		padding: 0 var(--spacing-l);
-		background-color: #FFF;
+		background-color: #fff;
 	}
 
 	div {

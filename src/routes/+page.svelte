@@ -18,7 +18,7 @@
 	Author: Tim Gesemann,
 	Site: htts://tim-gesemann.dev/,
 	Context: Landing Page,
-	This is the landing page of Tim Gesemann's personal website. It contains information about the author, his skills, his work, and his contact information.
+	This is the landing page of Tim Gesemann's personal website. He is a Fullstack Software Developer from Hannover, Germany. It contains information about the author, his skills, his work, and his contact information.
 "
 />
 <ExternalScriptLoader />
