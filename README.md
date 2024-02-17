@@ -3,18 +3,20 @@
 This is the source-code repo of my personal website. If you haven't seen it in action, make sure to check it out at:
 
 <div align="center">
-  <a href="https://tim-gesemann.dev" style="font-size: 24px;">tim-gesemann.dev</a>
+
+  ### [tim-gesemann.dev](https://tim-gesemann.dev)
+
 </div>
 
 ![landing-page-screenshot](readme-assets/landing-page.png)
 
-## 🤓 Curious about it?
+# 🤓 Curious whats underneath?
 
 - [🤔 How was it built?](#-how-was-it-built)
-  - [general-teck-stack](#general-teck-stack)
+  - [basic tech stack](#basic-tech-stack)
     - [FrontEnd](#frontend)
     - [Backend](#backend)
-  - [🏗️ Infrastructure](#️-infrastructure)
+  - [🏗️ Infrastructure](#-infrastructure)
     - [Disclaimer](#disclaimer)
   - [Form Security](#form-security)
   - [Cookies...](#cookies)
@@ -27,7 +29,7 @@ This is the source-code repo of my personal website. If you haven't seen it in a
 
 # 🤔 How was it built?
 
-## general-teck-stack
+## Basic Tech Stack
 
 ### FrontEnd
 
