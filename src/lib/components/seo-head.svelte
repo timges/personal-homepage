@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { JointData } from '@dimforge/rapier3d-compat';
-
 	export let title = '';
 	export let description = '';
 	export let mainEntityOfPage = false;
