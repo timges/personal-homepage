@@ -33,8 +33,7 @@ This is the source-code repo of my personal website. If you haven't seen it in a
 
 ### FrontEnd
 
-The <strong>design</strong> was done using [Figma](https://www.figma.com/).
-The basis of the implementation is of course HTML & JS. Based on that I used the following frameworks / libraries
+The <strong>design</strong> was done using [Figma](https://www.figma.com/). Based on HTML & JS I used the following frameworks / libraries
 
 - [SvelteKit](https://kit.svelte.dev/)
 - [GSAP](https://gsap.com/)
