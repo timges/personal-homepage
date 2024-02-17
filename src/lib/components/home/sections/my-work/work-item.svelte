@@ -68,6 +68,9 @@
 	}
 	svg {
 		fill: var(--color-primary);
+		&:hover {
+			fill: var(--color-secondary);
+		}
 	}
 	.description {
 		height: 300px;
@@ -76,7 +79,6 @@
 		all: unset;
 		display: flex;
 		align-items: stretch;
-		cursor: pointer;
 		flex-direction: column;
 		letter-spacing: var(--letter-spacing-l);
 		background-color: var(--color-bg-light);
@@ -86,20 +88,6 @@
 			background-color 0.2s ease-in-out,
 			transform 0.2s ease-in-out;
 		height: 350px;
-
-		&:hover {
-			background-color: var(--color-secondary);
-			transform: scale(1.05);
-			color: var(--color-text-on-secondary);
-
-			svg {
-				fill: var(--color-text-on-secondary);
-
-				&:hover {
-					fill: var(--color-primary);
-				}
-			}
-		}
 	}
 
 	.icon {
