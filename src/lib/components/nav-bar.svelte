@@ -5,7 +5,7 @@
 <nav id="nav" use:viewport on:exit-viewport on:enter-viewport>
 	<div>
 		<a href="/">
-			<p>t</p>
+			<p>tg</p>
 		</a>
 	</div>
 	<ul>

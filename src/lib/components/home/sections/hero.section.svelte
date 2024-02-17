@@ -14,8 +14,8 @@
 		<h1>Tim Gesemann</h1>
 		<p class="cta-greeting">I turn coffee into code.</p>
 		<p class="cta-introduction">
-			I'm a Software Engineer with years of experience in designing and developing enterprise
-			software solutions
+			I'm a Software Engineer from Germany with years of experience in designing and developing
+			enterprise software solutions
 		</p>
 		<button on:click={handleCtaClick} class="cta-button"><p>GET IN TOUCH</p></button>
 	</div>
@@ -35,6 +35,7 @@
 		font-weight: bold;
 		cursor: pointer;
 		transition: all 0.2s ease-in-out;
+		max-width: 400px;
 
 		&:after {
 			content: '';
@@ -89,7 +90,7 @@
 	}
 
 	.cta-introduction {
-		max-width: 350px;
+		max-width: 300px;
 		margin: var(--spacing-xl) 0;
 		color: var(--color-primary);
 		font-weight: 100;
@@ -137,6 +138,14 @@
 			margin-top: var(--spacing-l);
 			display: flex;
 			flex-direction: column;
+			align-items: center;
+		}
+		.cta-introduction {
+			max-width: 100%;
+		}
+		button {
+			align-self: center;
+			width: 100%;
 		}
 
 		section {
@@ -166,6 +175,11 @@
 					font-size: var(--font-size-h2);
 				}
 			}
+		}
+	}
+	@media screen and (min-width: 1720px) {
+		.cta-introduction {
+			max-width: 500px;
 		}
 	}
 </style>
