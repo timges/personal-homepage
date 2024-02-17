@@ -177,9 +177,9 @@
 			}
 		}
 	}
-	@media screen and (min-width: 1720px) {
+	@media screen and (min-width: 1620px) {
 		.cta-introduction {
-			max-width: 500px;
+			max-width: 450px;
 		}
 	}
 </style>
