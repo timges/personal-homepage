@@ -23,7 +23,7 @@ export async function GET() {
       <lastmod>2022-02-16</lastmod>
     </url>
     <url>
-      <loc>https://tim-gesemann.dev/privacy-policy<//loc>
+      <loc>https://tim-gesemann.dev/privacy-policy</loc>
       <lastmod>2022-02-16</lastmod>
     </url>
     <url>

@@ -38,7 +38,7 @@
 		</Text>
 		<Hr style={hr} />
 		<Container style={container}>
-			<Link style={link} href="">
+			<Link style={link} href="http://github.com/timges">
 				<img src="https://tim-gesemann.dev/email-assets/github.png" alt="github-icon" />
 			</Link>
 			<Link style={link} href="https://www.linkedin.com/in/tim-gesemann/">
