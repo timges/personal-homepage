@@ -17,6 +17,7 @@
 	let suppressPopover: boolean = false;
 	$: $errors[name] ? showPopover() : closePopover();
 	$: suppressPopover && setTimeout(() => (suppressPopover = false), 5000);
+	$: isPopoverFeatureAvailable = popoverRef?.popover;
 
 	function handleToggle({ newState }: ToggleEvent) {
 		if (newState === 'closed') {
@@ -43,11 +44,11 @@
 		closePopover();
 	}
 	function closePopover() {
-		popoverRef?.hidePopover();
+		isPopoverFeatureAvailable && popoverRef?.hidePopover();
 	}
 	function showPopover() {
 		if (suppressPopover) return;
-		popoverRef?.showPopover();
+		isPopoverFeatureAvailable && popoverRef?.showPopover();
 	}
 </script>
 
@@ -81,6 +82,7 @@
 		style:top={`calc(${popoverOffsetTop}px`}
 		style:left={`${popoverOffsetLeft}px`}
 		style:width={`${popoverWidth}px`}
+		style:display={!isPopoverFeatureAvailable ? 'none' : undefined}
 		on:beforetoggle={handleToggle}
 	>
 		<button on:click={handleCloseClicked} tabindex="-1" type="button">
