@@ -9,14 +9,14 @@
 	export let type: string;
 	export let maxLength: number;
 
-	let popoverRef: HTMLDivElement;
+	let popoverRef: HTMLDivElement | undefined;
 	let containerRef: HTMLDivElement;
 	let popoverOffsetLeft: number = 0;
 	let popoverOffsetTop: number = 0;
 	let popoverWidth: number = 0;
-	let supressPopover: boolean = false;
+	let suppressPopover: boolean = false;
 	$: $errors[name] ? showPopover() : closePopover();
-	$: supressPopover && setTimeout(() => (supressPopover = false), 5000);
+	$: suppressPopover && setTimeout(() => (suppressPopover = false), 5000);
 
 	function handleToggle({ newState }: ToggleEvent) {
 		if (newState === 'closed') {
@@ -27,6 +27,7 @@
 		}
 	}
 	async function updatePopoverPositionAndDimension() {
+		if (!popoverRef) return;
 		const { x, y } = await computePosition(containerRef, popoverRef, {
 			placement: 'bottom-start'
 		});
@@ -38,14 +39,14 @@
 	onMount(updatePopoverPositionAndDimension);
 
 	function handleCloseClicked() {
-		supressPopover = true;
+		suppressPopover = true;
 		closePopover();
 	}
 	function closePopover() {
 		popoverRef?.hidePopover();
 	}
 	function showPopover() {
-		if (supressPopover) return;
+		if (suppressPopover) return;
 		popoverRef?.showPopover();
 	}
 </script>
@@ -82,7 +83,7 @@
 		style:width={`${popoverWidth}px`}
 		on:beforetoggle={handleToggle}
 	>
-		<button on:click={handleCloseClicked} tabindex="-1">
+		<button on:click={handleCloseClicked} tabindex="-1" type="button">
 			<p>{$errors[name]?.[0]}</p>
 			<p>X</p>
 		</button>
