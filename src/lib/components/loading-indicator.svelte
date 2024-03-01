@@ -2,9 +2,6 @@
 
 <style lang="scss">
 	@import '../../sass/main';
-	:global(body) {
-		overflow: hidden;
-	}
 	.loader {
 		position: relative;
 		width: 100px;
