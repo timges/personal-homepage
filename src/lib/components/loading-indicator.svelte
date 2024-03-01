@@ -1,4 +1,8 @@
-<span class="loader"></span>
+<script>
+	import { fly } from 'svelte/transition';
+</script>
+
+<span transition:fly class="loader"></span>
 
 <style lang="scss">
 	@import '../../sass/main';
