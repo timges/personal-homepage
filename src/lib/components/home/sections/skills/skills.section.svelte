@@ -6,6 +6,7 @@
 	import MySqlIcon from './icons/my-sql-icon.svelte';
 	import NodeJsIcon from './icons/node-js-icon.svelte';
 	import ReactIcon from './icons/react-icon.svelte';
+	import SvelteIcon from './icons/svelte-icon.svelte';
 	import TsIcon from './icons/ts-icon.svelte';
 
 	let innerWidth: number;
@@ -25,6 +26,7 @@
 		<a target="_blank" href="https://nodejs.org/en"><NodeJsIcon /></a>
 		<a target="_blank" href="https://www.java.com/de/"><JavaIcon /></a>
 		<a target="_blank" href="https://www.mysql.com/de/"><MySqlIcon /></a>
+		<a target="_blank" href="https://www.svelte.dev"><SvelteIcon /></a>
 	</div>
 </section>
 
