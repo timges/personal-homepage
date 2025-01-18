@@ -1,8 +1,11 @@
 <script>
+	import { createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	import viewport from '../../util/useViewportAction';
 </script>
 
-<nav id="nav" use:viewport on:exit-viewport on:enter-viewport>
+<nav id="nav" use:viewport onexit-viewport={bubble('exit-viewport')} onenter-viewport={bubble('enter-viewport')}>
 	<div>
 		<a href="/">
 			<p>tg</p>
@@ -17,7 +20,7 @@
 </nav>
 
 <style lang="scss">
-	@import '../../sass/main';
+	@use '../../sass/main';
 
 	nav {
 		background-color: var(--color-bg-dark);

@@ -6,10 +6,10 @@
 
 	const baseSlide = {
 		duration: 300,
-		easning: bounceIn
+		easing: bounceIn
 	} as SlideParams;
 
-	let mounted = false;
+	let mounted = $state(false);
 
 	onMount(() => {
 		mounted = true;
@@ -41,8 +41,8 @@
 			> page.
 		</p>
 		<div class="action-container">
-			<button on:click={handleCookieConsent}>Go for it!</button>
-			<button on:click={handleCookieDeny}>Not today</button>
+			<button onclick={handleCookieConsent}>Go for it!</button>
+			<button onclick={handleCookieDeny}>Not today</button>
 		</div>
 	</aside>
 {/if}

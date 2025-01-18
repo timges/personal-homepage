@@ -14,8 +14,7 @@
 		<h1>Tim Gesemann</h1>
 		<p class="cta-greeting">I turn coffee into code.</p>
 		<p class="cta-introduction">
-			I'm a Software Engineer from Germany with years of experience in designing and developing
-			enterprise software solutions
+			I'm a Fullstack Software Engineer from Germany with a passion for design systems and frontend development.
 		</p>
 		<button on:click={handleCtaClick} class="cta-button"><p>GET IN TOUCH</p></button>
 	</div>
@@ -23,7 +22,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../../../sass/main';
+	@use '../../../../sass/main';
 	.cta-button {
 		position: relative;
 		background-color: var(--color-primary);

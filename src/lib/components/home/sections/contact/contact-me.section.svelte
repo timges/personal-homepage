@@ -1,26 +1,36 @@
 <script lang="ts">
-	import { contactFormSchema } from '$lib/util/contact-form-schema';
-	import { fly } from 'svelte/transition';
-	import { superForm } from 'sveltekit-superforms/client';
-	import FormField from './form-field.svelte';
-	import type { SuperValidated } from 'sveltekit-superforms';
-	import { tick } from 'svelte';
 	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
-	import { cookieStatus } from '$lib/store/cookie-store';
 	import LoadingIndicator from '$lib/components/loading-indicator.svelte';
 	import Toast from '$lib/components/toast.svelte';
+	import { cookieStatus } from '$lib/store/cookie-store';
+	import { contactFormSchema } from '$lib/util/contact-form-schema';
+	import { tick } from 'svelte';
+	import { preventDefault, run } from 'svelte/legacy';
+	import { fly } from 'svelte/transition';
+	import type { SuperValidated } from 'sveltekit-superforms';
+	import { zod } from 'sveltekit-superforms/adapters';
+	import { superForm } from 'sveltekit-superforms/client';
+	import FormField from './form-field.svelte';
 
-	export let data: { form: SuperValidated<any> };
+	interface Props {
+		data: { form: SuperValidated<any> };
+	}
 
-	let formRef: HTMLFormElement;
-	let isSubmitting = false;
-	let submissionError = false;
+	let { data }: Props = $props();
 
-	$: submissionError && setTimeout(() => (submissionError = false), 2000);
-	$: $form.consent ? ($cookieStatus = 'accepted') : null;
+	let formRef: HTMLFormElement | undefined = $state();
+	let isSubmitting = $state(false);
+	let submissionError = $state(false);
+
+	$effect(() => {
+		submissionError && setTimeout(() => (submissionError = false), 2000);
+	});
+	$effect(() => {
+		$form.consent ? ($cookieStatus = 'accepted') : null;
+	});
 	const { form, enhance, errors } = superForm(data.form, {
 		validationMethod: 'auto',
-		validators: contactFormSchema,
+		validators: zod(contactFormSchema),
 		onResult: ({ result }) => {
 			isSubmitting = false;
 			if (result.status === 200) {
@@ -37,8 +47,10 @@
 		},
 		resetForm: true
 	});
-	let submissionSuccessful = false;
-	$: submissionSuccessful && setTimeout(() => (submissionSuccessful = false), 1000);
+	let submissionSuccessful = $state(false);
+	run(() => {
+		submissionSuccessful && setTimeout(() => (submissionSuccessful = false), 1000);
+	});
 
 	function onSubmitButtonClick() {
 		// @ts-ignore
@@ -58,8 +70,14 @@
 
 <section id="contact-me">
 	<h2>CONTACT ME</h2>
-	<aside />
-	<form method="POST" class="contact-form" use:enhance bind:this={formRef} on:submit|preventDefault>
+	<aside></aside>
+	<form
+		method="POST"
+		class="contact-form"
+		use:enhance
+		bind:this={formRef}
+		onsubmit={preventDefault(bubble('submit'))}
+	>
 		<FormField {form} {errors} name="name" placeholder="name" type="text" maxLength={50} />
 		<FormField
 			{form}
@@ -102,7 +120,7 @@
 			<button
 				type="submit"
 				style:background-color={submissionSuccessful ? 'green' : undefined}
-				on:click|preventDefault={onSubmitButtonClick}
+				onclick={preventDefault(onSubmitButtonClick)}
 				disabled={!$form.consent}
 			>
 				<div class="button-content">
@@ -147,7 +165,7 @@
 <Toast message="Oops.. Something went wrong. Please try again later" display={submissionError} />
 
 <style lang="scss">
-	@import '../../../../../sass/main';
+	@use '../../../../../sass/main';
 	.contact-form {
 		grid-column: 4 / 8;
 		grid-row: 2 / span all;

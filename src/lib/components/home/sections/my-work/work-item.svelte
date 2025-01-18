@@ -1,11 +1,21 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
-	export let title: string;
-	export let description: string;
-	export let tags: string[];
-	export let icon: 'link' | 'github' | undefined = undefined;
-	export let link: string | undefined = undefined;
+	interface Props {
+		title: string;
+		description: string;
+		tags: string[];
+		icon?: 'link' | 'github' | undefined;
+		link?: string | undefined;
+	}
+
+	let {
+		title,
+		description,
+		tags,
+		icon = undefined,
+		link = undefined
+	}: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -14,7 +24,7 @@
 	}
 </script>
 
-<button class="container" on:click={dispatchContainerClickEvent}>
+<button class="container" onclick={dispatchContainerClickEvent}>
 	<h3>{title}</h3>
 	<p class="description">{description}</p>
 	<div class="meta-container">
@@ -48,7 +58,7 @@
 </button>
 
 <style lang="scss">
-	@import '../../../../../sass/main';
+	@use '../../../../../sass/main';
 
 	ul {
 		display: flex;

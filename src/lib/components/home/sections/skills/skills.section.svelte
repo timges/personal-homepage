@@ -31,7 +31,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../../../../sass/main';
+	@use '../../../../../sass/main';
 
 	section {
 		width: 100%;

@@ -1,23 +1,33 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { computePosition } from '@floating-ui/dom';
 	import { onMount } from 'svelte';
 
-	export let form;
-	export let errors;
-	export let name: string;
-	export let placeholder: string;
-	export let type: string;
-	export let maxLength: number;
+	interface Props {
+		form: any;
+		errors: any;
+		name: string;
+		placeholder: string;
+		type: string;
+		maxLength: number;
+	}
 
-	let popoverRef: HTMLDivElement | undefined;
-	let containerRef: HTMLDivElement;
-	let popoverOffsetLeft: number = 0;
-	let popoverOffsetTop: number = 0;
-	let popoverWidth: number = 0;
-	let suppressPopover: boolean = false;
-	$: $errors[name] ? showPopover() : closePopover();
-	$: suppressPopover && setTimeout(() => (suppressPopover = false), 5000);
-	$: isPopoverFeatureAvailable = popoverRef?.popover;
+	let {
+		form,
+		errors,
+		name,
+		placeholder,
+		type,
+		maxLength
+	}: Props = $props();
+
+	let popoverRef: HTMLDivElement | undefined = $state();
+	let containerRef: HTMLDivElement | undefined = $state();
+	let popoverOffsetLeft: number = $state(0);
+	let popoverOffsetTop: number = $state(0);
+	let popoverWidth: number = $state(0);
+	let suppressPopover: boolean = $state(false);
 
 	function handleToggle({ newState }: ToggleEvent) {
 		if (newState === 'closed') {
@@ -50,11 +60,18 @@
 		if (suppressPopover) return;
 		isPopoverFeatureAvailable && popoverRef?.showPopover();
 	}
+	$effect(() => {
+		$errors[name] ? showPopover() : closePopover();
+	})
+	$effect(() => {
+		suppressPopover && setTimeout(() => (suppressPopover = false), 5000);
+	});
+	let isPopoverFeatureAvailable = $derived(popoverRef?.popover);
 </script>
 
 <svelte:window
-	on:resize={updatePopoverPositionAndDimension}
-	on:scroll={updatePopoverPositionAndDimension}
+	onresize={updatePopoverPositionAndDimension}
+	onscroll={updatePopoverPositionAndDimension}
 />
 <div bind:this={containerRef} class="input-container">
 	{#if type === 'textarea'}
@@ -64,7 +81,7 @@
 			bind:value={$form[name]}
 			{placeholder}
 			aria-invalid={!!$errors[name]}
-		/>
+		></textarea>
 	{:else}
 		<input
 			title={`Your ${name}`}
@@ -83,9 +100,9 @@
 		style:left={`${popoverOffsetLeft}px`}
 		style:width={`${popoverWidth}px`}
 		style:display={!isPopoverFeatureAvailable ? 'none' : undefined}
-		on:beforetoggle={handleToggle}
+		onbeforetoggle={handleToggle}
 	>
-		<button on:click={handleCloseClicked} tabindex="-1" type="button">
+		<button onclick={handleCloseClicked} tabindex="-1" type="button">
 			<p>{$errors[name]?.[0]}</p>
 			<p>X</p>
 		</button>
@@ -93,7 +110,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../../../../sass/variables';
+	@use '../../../../../sass/variables';
 
 	input,
 	textarea {

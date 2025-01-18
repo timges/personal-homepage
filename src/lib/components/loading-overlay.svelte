@@ -7,7 +7,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../sass/main';
+	@use '../../sass/main';
 	:global(body) {
 		overflow: hidden;
 	}

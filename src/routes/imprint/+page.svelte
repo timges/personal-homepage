@@ -31,7 +31,7 @@ This is the imprint of Tim Gesemann's personal website. It contains information 
 </section>
 
 <style lang="scss">
-	@import '../../sass/main';
+	@use '../../sass/main';
 	:global(body, html) {
 		height: 100%;
 		background-color: var(--color-bg-dark);

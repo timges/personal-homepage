@@ -78,7 +78,7 @@
 >
 
 <style lang="scss">
-	@import '../../../../../../sass/main';
+	@use '../../../../../../sass/main';
 	svg {
 		width: var(--icon-size-xl);
 		height: var(--icon-size-xl);

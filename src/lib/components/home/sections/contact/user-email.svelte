@@ -1,6 +1,20 @@
 <script>
-	import { Body, Container, Head, Heading, Hr, Html, Link, Text } from 'svelte-email';
-	export let name = 'John Doe';
+	import {
+		Body,
+		Container,
+		Heading,
+		Hr,
+		Html,
+		Link,
+		Text
+	} from '@sveltelaunch/svelte-5-email';
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [name]
+	 */
+
+	/** @type {Props} */
+	let { name = 'John Doe' } = $props();
 
 	const heading = {
 		fontSize: '24px',

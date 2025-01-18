@@ -1,18 +1,20 @@
-import { contactFormSchema } from '$lib/util/contact-form-schema.js';
-import { superValidate } from 'sveltekit-superforms/server';
+import { RECAPTCHA_SECRET_KEY, SENDGRID_API_KEY } from '$env/static/private';
 import AdminEmail from '$lib/components/home/sections/contact/admin-email.svelte';
 import UserEmail from '$lib/components/home/sections/contact/user-email.svelte';
+import { contactFormSchema } from '$lib/util/contact-form-schema.js';
 import sendgrid from '@sendgrid/mail';
-import { render } from 'svelte-email/render';
 import { fail } from '@sveltejs/kit';
+import { htmlRender } from '@sveltelaunch/svelte-5-email';
 import type { SuperValidated } from 'sveltekit-superforms';
-import { SENDGRID_API_KEY, RECAPTCHA_SECRET_KEY } from '$env/static/private';
+import { zod } from 'sveltekit-superforms/adapters';
+import { superValidate } from 'sveltekit-superforms/server';
 
 sendgrid.setApiKey(SENDGRID_API_KEY);
 
-async function sendAdminEmail(form: SuperValidated<typeof contactFormSchema>) {
-	const emailTemplate = render({
+async function sendAdminEmail(form: SuperValidated<any>) {
+	const emailTemplate = htmlRender({
 		template: AdminEmail,
+		options: {},
 		props: form.data
 	});
 	const options: sendgrid.MailDataRequired = {
@@ -27,9 +29,10 @@ async function sendAdminEmail(form: SuperValidated<typeof contactFormSchema>) {
 	await sendgrid.send(options);
 }
 
-async function sendUserEmail(form: SuperValidated<typeof contactFormSchema>) {
-	const emailTemplate = render({
+async function sendUserEmail(form: SuperValidated<any>) {
+	const emailTemplate = htmlRender({
 		template: UserEmail,
+		options: {},
 		props: {
 			name: form.data.name
 		}
@@ -58,14 +61,14 @@ async function validateReCaptcha(token: string) {
 }
 
 export async function load() {
-	const form = await superValidate(contactFormSchema);
+	const form = await superValidate(zod(contactFormSchema));
 	return { form };
 }
 
 export const actions = {
 	default: async ({ request }: { request: Request }) => {
 		try {
-			const form = await superValidate(request, contactFormSchema);
+			const form = await superValidate(request, zod(contactFormSchema));
 			if (!form.valid) {
 				return fail(400, { form });
 			}

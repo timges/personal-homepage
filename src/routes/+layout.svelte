@@ -5,8 +5,13 @@
 	import NavBar from '../lib/components/nav-bar.svelte';
 	import LoadingOverlay from '$lib/components/loading-overlay.svelte';
 	import { onMount } from 'svelte';
-	let showBackToTop: boolean;
-	let isLoading = true;
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
+	let showBackToTop: boolean = $state();
+	let isLoading = $state(true);
 
 	onMount(() => {
 		isLoading = false;
@@ -22,14 +27,14 @@
 />
 <Socials {showBackToTop} />
 
-<slot />
+{@render children?.()}
 
 {#if $cookieStatus === 'not-answered'}
 	<CookieBanner />
 {/if}
 
 <style lang="scss" global>
-	@import '../sass/main';
+	@use '../sass/main';
 	:global(:root) {
 		letter-spacing: var(--letter-spacing-l);
 		scroll-behavior: smooth;

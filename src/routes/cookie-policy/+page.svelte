@@ -89,10 +89,10 @@
 	<div>
 		{#if $cookieStatus === 'accepted'}
 			<p>Cookies are curretly <strong>allowed</strong>.</p>
-			<button class="disable-btn" on:click={handleCookieConsent}>Disable now</button>
+			<button class="disable-btn" onclick={handleCookieConsent}>Disable now</button>
 		{:else}
 			<p>Cookies are curretly <strong>disabled</strong>.</p>
-			<button class="enable-btn" on:click={handleCookieConsent}>Enable now</button>
+			<button class="enable-btn" onclick={handleCookieConsent}>Enable now</button>
 		{/if}
 	</div>
 </section>

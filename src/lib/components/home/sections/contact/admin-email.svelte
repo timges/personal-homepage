@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { Heading, Hr, Html, Section, Text } from 'svelte-email';
+	import { Heading, Hr, Html, Section, Text } from '@sveltelaunch/svelte-5-email';
 
-	export let name: string;
-	export let email: string;
-	export let subject: string;
-	export let message: string;
+	interface Props {
+		name: string;
+		email: string;
+		subject: string;
+		message: string;
+	}
+
+	let { name, email, subject, message }: Props = $props();
 
 	const main = {
 		padding: '20px',

@@ -1,9 +1,13 @@
-<script>
+<script lang='ts'>
 	import { fly } from 'svelte/transition';
 
-	export let severity = 'error';
-	export let message = 'This is a toast message';
-	export let display = false;
+	interface Props {
+		severity?: string;
+		message?: string;
+		display?: boolean;
+	}
+
+	let { severity = 'error', message = 'This is a toast message', display = $bindable(false) }: Props = $props();
 
 	function hideToast() {
 		display = false;
@@ -13,12 +17,12 @@
 {#if display}
 	<aside class={severity} transition:fly>
 		<p>{message}</p>
-		<button on:click={hideToast}>X</button>
+		<button onclick={hideToast}>X</button>
 	</aside>
 {/if}
 
 <style lang="scss">
-	@import '../../sass/main';
+	@use '../../sass/main';
 
 	aside {
 		position: fixed;

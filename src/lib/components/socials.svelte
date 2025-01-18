@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	export let showBackToTop: boolean = false;
+	interface Props {
+		showBackToTop?: boolean;
+	}
+
+	let { showBackToTop = false }: Props = $props();
 </script>
 
 <aside>
@@ -52,7 +56,7 @@
 </aside>
 
 <style lang="scss">
-	@import '../../sass/main';
+	@use '../../sass/main';
 	.socials {
 		display: flex;
 		flex-direction: column;

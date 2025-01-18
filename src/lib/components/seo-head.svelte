@@ -1,9 +1,13 @@
 <script lang="ts">
-	export let title = '';
-	export let description = '';
-	export let mainEntityOfPage = false;
 
 	import items from '../components/home/sections/my-work/items';
+    interface Props {
+        title?: string;
+        description?: string;
+        mainEntityOfPage?: boolean;
+    }
+
+    let { title = '', description = '', mainEntityOfPage = false }: Props = $props();
 </script>
 
 <svelte:head>

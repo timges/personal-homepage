@@ -8,7 +8,7 @@
 	import ExternalScriptLoader from '$lib/components/external-script-loader.svelte';
 	import SeoHead from '$lib/components/seo-head.svelte';
 
-	export let data;
+	let { data } = $props();
 </script>
 
 <SeoHead

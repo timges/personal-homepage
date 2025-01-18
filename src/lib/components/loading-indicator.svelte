@@ -5,7 +5,7 @@
 <span transition:fly class="loader"></span>
 
 <style lang="scss">
-	@import '../../sass/main';
+	@use '../../sass/main';
 	.loader {
 		position: relative;
 		width: 100px;
