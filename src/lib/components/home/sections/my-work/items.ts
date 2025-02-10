@@ -37,10 +37,12 @@ export default [
 	},
 	{
 		id: '4',
-		title: 'Beverage Payment',
+		title: 'Wellenstand',
 		description:
-			'A mobile app for office beverage organization, facilitating the purchase and sharing of drinks among colleagues.',
-		tags: ['Typescript', 'React-Native', 'deno', 'MongoDB']
+			'A web app providing real-time river-surfing conditions in Germany, Austria, and Switzerland using data from public API\'s on river levels, water temperature, weather and more.',
+		tags: ['Typescript', 'Astro', 'Svelte', 'GitHubs', 'Node.js'],
+		icon: 'link',
+		link: 'https://wellenstand.de'
 	},
 	{
 		id: '5',
