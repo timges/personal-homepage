@@ -65,10 +65,6 @@
 			}
 		}
 	}
-	button {
-		all: unset;
-		cursor: pointer;
-	}
 	p {
 		font-size: 2.5rem;
 		color: var(--color-primary);

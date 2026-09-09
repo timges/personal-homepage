@@ -9,6 +9,16 @@ import type { SuperValidated } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { superValidate } from 'sveltekit-superforms/server';
 
+if (!SENDGRID_API_KEY || !SENDGRID_API_KEY.startsWith('SG.')) {
+	throw new Error(
+		'Missing or invalid SENDGRID_API_KEY (expected to start with "SG."). Check .env.local / hosting env vars. See .env.example.'
+	);
+}
+
+if (!RECAPTCHA_SECRET_KEY) {
+	throw new Error('Missing RECAPTCHA_SECRET_KEY. Check .env.local / hosting env vars.');
+}
+
 sendgrid.setApiKey(SENDGRID_API_KEY);
 
 async function sendAdminEmail(form: SuperValidated<any>) {
@@ -78,7 +88,7 @@ export const actions = {
 			}
 			await sendAdminEmail(form);
 			//No await, cause we don't want to block the user if the user email fails
-			sendUserEmail(form);
+			void sendUserEmail(form).catch((error) => console.error('Failed to send user email:', error));
 			return { form };
 		} catch (error) {
 			console.error(error);

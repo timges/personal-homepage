@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../app.scss';
 	import CookieBanner from '$lib/components/cookie-banner.svelte';
 	import Socials from '$lib/components/socials.svelte';
 	import { cookieStatus } from '$lib/store/cookie-store';
@@ -32,24 +33,3 @@
 {#if $cookieStatus === 'not-answered'}
 	<CookieBanner />
 {/if}
-
-<style lang="scss" global>
-	@use '../sass/main';
-	:global(:root) {
-		letter-spacing: var(--letter-spacing-l);
-		scroll-behavior: smooth;
-	}
-	:global(body) {
-		overflow: auto;
-	}
-
-	:global(*) {
-		@font-face {
-			font-family: type-writer;
-			src: url('/fonts/type-writer.ttf');
-		}
-	}
-	:global(.grecaptcha-badge) {
-		visibility: hidden;
-	}
-</style>

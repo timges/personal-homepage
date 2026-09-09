@@ -1,0 +1,19 @@
+@use 'sass/main';
+
+:root {
+	letter-spacing: var(--letter-spacing-l);
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow: auto;
+}
+
+@font-face {
+	font-family: type-writer;
+	src: url('/fonts/type-writer.ttf');
+}
+
+.grecaptcha-badge {
+	visibility: hidden;
+}
