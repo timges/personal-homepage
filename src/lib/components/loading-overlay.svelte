@@ -8,9 +8,6 @@
 
 <style lang="scss">
 	@use '../../sass/main';
-	:global(body) {
-		overflow: hidden;
-	}
 	.loading-overlay {
 		position: fixed;
 		overflow: hidden;
